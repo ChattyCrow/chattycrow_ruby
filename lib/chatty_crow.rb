@@ -1,0 +1,2 @@
+module ChattyCrow
+end

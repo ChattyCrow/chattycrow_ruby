@@ -1,4 +1,4 @@
-chattycrow_ruby
-===============
+cc_ruby
+=======
 
-ChattyCrow notification library for ruby
+CC ruby gem
