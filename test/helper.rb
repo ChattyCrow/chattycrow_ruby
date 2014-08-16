@@ -1,13 +1,11 @@
-require 'simplecov'
 require 'chatty_crow'
-require 'test/unit'
 require 'rubygems'
 require 'fakeweb'
-require 'rubygems'
 require 'minitest/autorun'
 require 'minitest/should'
+require 'coveralls'
 
-SimpleCov.start
+Coveralls.wear!
 
 module TestHelpers
   def mock_url(options)

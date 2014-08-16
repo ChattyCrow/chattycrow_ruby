@@ -11,4 +11,4 @@ Rake::TestTask.new(:test) do |t|
 end
 
 # Default task - test
-task default: [ :test ]
+task default: %w( test coveralls:push)
