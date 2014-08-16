@@ -1,0 +1,73 @@
+h1. ChattyCrow - Ruby (on Rails) library
+
+This library makes easier to call Chatty Crow notification API even outside of rails.
+
+h2. Installation
+
+<pre>
+# Gemfile
+gem 'chatty_crow'
+bundle install
+
+# Manually
+gem install chatty_crow
+</pre>
+
+h2. Configuration
+
+h3. Yaml configuration
+
+<pre>
+# config/chatty_crow.yml
+
+global: &global_settings
+  server_url: 'https://chatty_crow.com/api/v1/'
+  token: 'asdfg12345'
+  default_channel: 'asdfg12345'
+
+development:
+  <<: *global_settings
+
+test:
+  <<: *global_settings
+
+production:
+  <<: *global_settings
+</pre>
+
+h3. Pass block with settings (initializer in Rails?)
+
+<pre>
+# "config/initializers/chatty_crow.rb"
+
+ChattyCrow.configure do |config|
+  config.server_url      = 'https://chatty_crow.com/api/v1/'
+  config.token           = 'asdfg12345'
+  config.default_channel = 'asdfg12345'
+end
+
+</pre>
+
+h2. Usage
+
+h3. Email notification
+
+h3. IOS Push notification
+
+h3. Android Push notification
+
+h3. Skype notification
+
+h3. Jabber notification
+
+h3. SMS notification (only Czech Republic yet)
+
+h2. Working with contacts via API
+
+It's actually very usable, you can automatically add or remove contacts in your application after user was registered.
+
+h3. Contact list
+
+h3. Add contact
+
+h3. Remove contact

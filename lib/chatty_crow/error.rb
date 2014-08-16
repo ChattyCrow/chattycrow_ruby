@@ -1,3 +1,4 @@
+# Parent of all ChattyCrow errors
 module ChattyCrow
   module Error
     class ChattyCrowError < StandardError
