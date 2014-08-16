@@ -79,13 +79,13 @@ class ContactsTest < MiniTest::Should::TestCase
     }
 
     # Fake URL contacts
-    mock_contacts method: :post, status: [ '201', 'Created' ], body: request.to_json
+    mock_contacts method: :delete, status: [ '201', 'Created' ], body: request.to_json
 
     # Get contacts
-    response = ChattyCrow.add_contacts(contacts: [ 'franta12', 'franta15' ])
+    response = ChattyCrow.remove_contacts(contacts: [ 'franta12', 'franta15' ])
 
     # Validate
-    expect(response).to_be_kind_of ChattyCrow::Response::ContactsAdd
+    expect(response).to_be_kind_of ChattyCrow::Response::ContactsRemove
     expect(response.status).to_equal request[:status]
     expect(response.msg).to_equal request[:msg]
 

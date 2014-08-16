@@ -9,9 +9,6 @@ require 'coveralls'
 # Start Coveralls
 Coveralls.wear!
 
-# Disallow all net connection
-FakeWeb.allow_net_connect = false
-
 # Set chatty_crow by block
 ChattyCrow.configure do |config|
   config.token           = 'temporary_token'

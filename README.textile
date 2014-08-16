@@ -70,6 +70,29 @@ It's actually very usable, you can automatically add or remove contacts in your 
 
 h3. Contact list
 
+<pre>
+  contacts = ChattyCrow.get_contacts(channel: 'other_than_default')
+  # contacts = [ 'contact1', 'contact2', 'contact3' ]
+</pre>
+
 h3. Add contact
 
+<pre>
+  response = ChattyCrow.add_contacts(channel: 'other_than_default', contacts: [ 'new1', 'new2exists', 'new3failed' ])
+  # Response
+  # response.success_count = 1
+  # response.exists_count  = 1
+  # response.failed_count  = 1
+  # response.exists = [ 'new2exists' ]
+  # response.failed = [ 'new3failed' ]
+</pre>
+
 h3. Remove contact
+
+<pre>
+  response = ChattyCrow.add_contacts(channel: 'other_than_default', contacts: [ 'new1', 'new2failed' ])
+  # Response
+  # response.success_count = 1
+  # response.failed_count  = 1
+  # response.failed = [ 'new2failed' ]
+</pre>
