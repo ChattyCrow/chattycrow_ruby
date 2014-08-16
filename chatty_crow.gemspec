@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ["lib"]
   s.files         = Dir["{generators/**/*,lib/**/*,rails/**/*,script/*}"]  +
-    %w(chatty_crow.gemspec CHANGELOG Gemfile Guardfile INSTALL LICENSE Rakefile README.md)
+    %w(chatty_crow.gemspec CHANGELOG Gemfile Guardfile INSTALL LICENSE Rakefile README.textile)
   s.test_files    = Dir.glob("{test}/**/*")
 
   s.add_runtime_dependency("multi_json", "~> 1.10.1")
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("minitest_should", "~> 0.3.1")
   s.add_development_dependency("json-schema", "~> 2.2.4")
   s.add_development_dependency("minitest", "~> 4.6.1")
+  s.add_development_dependency('minitest-spec-expect')
   s.add_development_dependency("rspec-rails")
   s.add_development_dependency("coveralls")
 

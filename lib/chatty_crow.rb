@@ -1,5 +1,8 @@
 require 'rest-client'
 require 'chatty_crow/config'
+require 'chatty_crow/error'
+require 'chatty_crow/response'
+require 'chatty_crow/request'
 require 'chatty_crow/notification_request'
 require 'chatty_crow/contacts_request'
 

@@ -2,7 +2,7 @@
 require 'yaml'
 
 module ChattyCrow
-  def self.configurate
+  def self.configure
     yield configuration
   end
 
@@ -19,6 +19,13 @@ module ChattyCrow
   def self.configure_from_rails
     path = ::Rails.root.join('config', 'chatty_crow.yml')
     configure_from_yaml(path) if File.exist?(Path)
+  end
+
+  def self.default_headers(channel = nil)
+    {
+      'Token' => configuration.token,
+      'Channel' => channel || configuration.default_channel
+    }
   end
 
   class Configuration
