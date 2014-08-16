@@ -1,6 +1,6 @@
 h1. ChattyCrow - Ruby (on Rails) library
 
-This library makes easier to call Chatty Crow notification API even outside of rails.
+This library makes easier call ChattyCrow API (http://chattycrow.com/).
 
 h2. Installation
 
@@ -21,7 +21,7 @@ h3. Yaml configuration
 # config/chatty_crow.yml
 
 global: &global_settings
-  server_url: 'https://chatty_crow.com/api/v1/'
+  host: 'https://chatty_crow.com/api/v1/'
   token: 'asdfg12345'
   default_channel: 'asdfg12345'
 
@@ -41,7 +41,7 @@ h3. Pass block with settings (initializer in Rails?)
 # "config/initializers/chatty_crow.rb"
 
 ChattyCrow.configure do |config|
-  config.server_url      = 'https://chatty_crow.com/api/v1/'
+  config.host            = 'https://chatty_crow.com/api/v1/'
   config.token           = 'asdfg12345'
   config.default_channel = 'asdfg12345'
 end

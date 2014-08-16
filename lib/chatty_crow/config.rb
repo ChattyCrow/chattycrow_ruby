@@ -11,9 +11,7 @@ module ChattyCrow
   end
 
   def self.configure_from_yaml(path)
-    yaml = YAML.load_file(path)[Rails.env]
-    return unless yaml
-    configuration.server_url      = yaml['server_url']
+    configuration.host            = yaml['host']
     configuration.token           = yaml['token']
     configuration.default_channel = yaml['default_channel']
   end
@@ -24,13 +22,32 @@ module ChattyCrow
   end
 
   class Configuration
-    attr_accessor :server_url, :token, :default_channel
+    # Server settings
+    # Default https://chatty-crow.com (https for secure connection)
+    attr_accessor :host
+
+    # User and channel settings
+    attr_accessor :token, :default_channel
+
+    # Open and read timeouts
+    attr_accessor :http_open_timeout
+    attr_accessor :http_read_timeout
+
+    # Call urls
+    attr_reader :notification_url, :contacts_url
 
     def initialize
-      config = YAML.load_file(File.join(BASE_PATH, 'config', 'config.yml'))
-      @server_url      = config['server_url']
-      @token           = config['token']
-      @default_channel = config['default_channel']
+      self.host          = 'https://chatty-crow.com/api/v1/'
+      @token             = nil
+      @default_channel   = nil
+      @http_open_timeout = 2
+      @http_read_timeout = 5
+    end
+
+    def host=(s)
+      @host             = s
+      @notification_url = s + (s[-1] == '/' ? '' : '/') + 'notification'
+      @contacts_url     = s + (s[-1] == '/' ? '' : '/') + 'contacts'
     end
   end
 end
