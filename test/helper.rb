@@ -15,9 +15,8 @@ ChattyCrow.configure do |config|
   config.default_channel = 'default_channel'
 end
 
+# Usefull test helpers
 module TestHelpers
-
-
   def configuration
     ChattyCrow.configuration
   end
@@ -33,7 +32,7 @@ module TestHelpers
   # Mock default URL for contacts
   def mock_contacts(options)
     method = options.delete(:method) || :get
-    options[:status] ||= [ '200', 'OK' ]
+    options[:status] ||= %w(200 OK)
 
     FakeWeb.register_uri(method, configuration.contacts_url, options)
   end
@@ -43,6 +42,7 @@ module TestHelpers
   end
 end
 
+# Include test helper methods to minitest!
 class MiniTest::Should::TestCase
   include ::TestHelpers
 end

@@ -1,9 +1,10 @@
 require File.expand_path '../helper', __FILE__
 
+# Unit test for contact methods
 class ContactsTest < MiniTest::Should::TestCase
-  should "Return contact list" do
+  should 'Return contact list' do
     # Fake URL contacts
-    mock_contacts body: { contacts: [ 'test1', 'test2' ] }.to_json
+    mock_contacts body: { contacts: [%w(test1 test2)] }.to_json
 
     # Get contacts
     response = ChattyCrow.get_contacts
@@ -17,12 +18,12 @@ class ContactsTest < MiniTest::Should::TestCase
     clear_mock_url
   end
 
-  should "Raise invalid argument when no contact list is present" do
+  should 'Raise invalid argument when no contact list is present' do
     expect { ChattyCrow.add_contacts }.to_raise ArgumentError
     expect { ChattyCrow.remove_contacts }.to_raise ArgumentError
   end
 
-  should "Return contact add list" do
+  should 'Return contact add list' do
     # Prepare response
     request = {
       status: 'OK',
@@ -33,8 +34,8 @@ class ContactsTest < MiniTest::Should::TestCase
         failed: 12
       },
       contacts: {
-        exists: [ 'franta1', 'franta5' ],
-        failed: [ 'franta2', 'franta3' ]
+        exists: [%w(franta1 franta5)],
+        failed: [%w(franta2 franta3)]
       }
     }
 
@@ -42,7 +43,7 @@ class ContactsTest < MiniTest::Should::TestCase
     mock_contacts method: :post, body: request.to_json
 
     # Get contacts
-    response = ChattyCrow.add_contacts(contacts: [ 'franta12', 'franta15' ])
+    response = ChattyCrow.add_contacts(contacts: %w(franta12 franta15))
 
     # Validate
     expect(response).to_be_kind_of ChattyCrow::Response::ContactsAdd
@@ -64,7 +65,7 @@ class ContactsTest < MiniTest::Should::TestCase
     clear_mock_url
   end
 
-  should "Return contact remove list" do
+  should 'Return contact remove list' do
     # Prepare response
     request = {
       status: 'OK',
@@ -74,15 +75,15 @@ class ContactsTest < MiniTest::Should::TestCase
         failed: 12
       },
       contacts: {
-        failed: [ 'franta2', 'franta3' ]
+        failed: %w(franta2 franta3)
       }
     }
 
     # Fake URL contacts
-    mock_contacts method: :delete, status: [ '201', 'Created' ], body: request.to_json
+    mock_contacts method: :delete, status: %w(201 Created), body: request.to_json
 
     # Get contacts
-    response = ChattyCrow.remove_contacts(contacts: [ 'franta12', 'franta15' ])
+    response = ChattyCrow.remove_contacts(contacts: %w(franta12 franta15))
 
     # Validate
     expect(response).to_be_kind_of ChattyCrow::Response::ContactsRemove

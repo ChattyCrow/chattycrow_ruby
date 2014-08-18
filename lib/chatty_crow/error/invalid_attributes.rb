@@ -4,9 +4,15 @@ module ChattyCrow
       # List of invalid attributes
       attr_accessor :attributes
 
-      def initialize(attr = [])
+      def initialize()
         super "Unauthorized ChattyCrow request"
-        @attributes = attr
+
+        # Get parameters from response
+        if @response_body && @response_body['parameters']
+          @attributes = @response_body['parameters']
+        else
+          @attributes = []
+        end
       end
     end
   end

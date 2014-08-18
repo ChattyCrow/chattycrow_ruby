@@ -56,6 +56,14 @@ h3. Email notification
 
 h3. IOS Push notification
 
+<pre>
+# Send request
+response = ChattyCrow.send_ios(alert: 'hello', channel: 'other_than_default', recipients: [ 'new_ios_id1', 'new_ios_id2' ])
+
+# Response
+response
+</pre>
+
 h3. Android Push notification
 
 h3. Skype notification

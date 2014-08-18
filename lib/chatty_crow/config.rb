@@ -1,6 +1,6 @@
-# Configuration
 require 'yaml'
 
+# Configuration module
 module ChattyCrow
   def self.configure
     yield configuration
@@ -28,6 +28,7 @@ module ChattyCrow
     }
   end
 
+  # Configuration class
   class Configuration
     # Server settings
     # Default https://chatty-crow.com (https for secure connection)

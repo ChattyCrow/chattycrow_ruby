@@ -2,6 +2,12 @@
 module ChattyCrow
   module Error
     class ChattyCrowError < StandardError
+
+      attr_accessor :response_body
+
+      def initialize(response = nil)
+        @response_body = JSON.parse(response.body) if response
+      end
     end
   end
 end
