@@ -18,7 +18,7 @@ module ChattyCrow
 
   def self.configure_from_rails
     path = ::Rails.root.join('config', 'chatty_crow.yml')
-    configure_from_yaml(path) if File.exist?(Path)
+    configure_from_yaml(path) if File.exist?(path)
   end
 
   def self.default_headers(channel = nil)
