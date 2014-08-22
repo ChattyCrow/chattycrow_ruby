@@ -15,11 +15,11 @@ module ChattyCrow
     NotificationRequest.send Request::Mail, options
   end
 
-  def self.send_ios_push(options = {})
+  def self.send_ios(options = {})
     NotificationRequest.send Request::Ios, options
   end
 
-  def self.send_android_push(options = {})
+  def self.send_android(options = {})
     NotificationRequest.send Request::Android, options
   end
 

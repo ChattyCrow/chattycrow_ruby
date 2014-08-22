@@ -66,6 +66,14 @@ response
 
 h3. Android Push notification
 
+<pre>
+# Send request
+response = ChattyCrow.send_android(alert: 'hello', data: 'data2', channel: 'other_than_default', contacts: [ 'new_ios_id1', 'new_ios_id2' ])
+
+# Response
+response
+</pre>
+
 h3. Skype notification
 
 h3. Jabber notification
