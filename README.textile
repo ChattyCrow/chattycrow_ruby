@@ -1,6 +1,6 @@
 h1. ChattyCrow - Ruby (on Rails) library
 
-!https://travis-ci.org/netbrick/chattycrow_ruby.svg!:https://travis-ci.org/netbrick/chattycrow_ruby !https://coveralls.io/repos/netbrick/chattycrow_ruby/badge.png(Coverage Status)!:https://coveralls.io/r/netbrick/chattycrow_ruby
+!https://travis-ci.org/netbrick/chattycrow_ruby.svg!:https://travis-ci.org/netbrick/chattycrow_ruby !https://coveralls.io/repos/netbrick/chattycrow_ruby/badge.png(Coverage Status)!:https://coveralls.io/r/netbrick/chattycrow_ruby !http://inch-ci.org/github/netbrick/chattycrow_ruby.png?branch=master!:http://inch-ci.org/github/netbrick/chattycrow_ruby !https://codeclimate.com/github/netbrick/chattycrow_ruby/badges/gpa.svg!:https://codeclimate.com/github/netbrick/chattycrow_ruby
 
 This library makes easier call ChattyCrow API (http://chattycrow.com/).
 
@@ -58,7 +58,7 @@ h3. IOS Push notification
 
 <pre>
 # Send request
-response = ChattyCrow.send_ios(alert: 'hello', channel: 'other_than_default', recipients: [ 'new_ios_id1', 'new_ios_id2' ])
+response = ChattyCrow.send_ios(alert: 'hello', channel: 'other_than_default', contacts: [ 'new_ios_id1', 'new_ios_id2' ])
 
 # Response
 response
@@ -86,7 +86,7 @@ h3. Contact list
 h3. Add contact
 
 <pre>
-  response = ChattyCrow.add_contacts(channel: 'other_than_default', contacts: [ 'new1', 'new2exists', 'new3failed' ])
+  response = ChattyCrow.add_contacts('new1', 'new2exists', 'new3failed', channel: 'other_than_default')
   # Response
   # response.success_count = 1
   # response.exists_count  = 1
@@ -98,7 +98,7 @@ h3. Add contact
 h3. Remove contact
 
 <pre>
-  response = ChattyCrow.add_contacts(channel: 'other_than_default', contacts: [ 'new1', 'new2failed' ])
+  response = ChattyCrow.remove_contacts('new1', 'new2exists', 'new3failed', channel: 'other_than_default')
   # Response
   # response.success_count = 1
   # response.failed_count  = 1

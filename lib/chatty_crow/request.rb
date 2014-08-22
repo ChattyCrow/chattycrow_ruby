@@ -2,12 +2,12 @@ module ChattyCrow
   module Request
     class BaseRequest
       # Methods
-      attr_accessor :recipients, :payload, :channel
+      attr_accessor :contacts, :payload, :channel
 
       # Intiialize
       def initialize(options = {})
         # Recipients
-        @recipients = ChattyCrow.wrap(options.delete(:recipients)).compact
+        @contacts = ChattyCrow.wrap(options.delete(:contacts)).compact
 
         # Channel
         @channel = options.delete(:channel)
@@ -22,7 +22,7 @@ module ChattyCrow
       end
 
       def to_json
-        { recipients: @recipients, payload: payload, headers: headers }
+        { contacts: @contacts, payload: payload, headers: headers }
       end
     end
   end

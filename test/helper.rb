@@ -5,8 +5,11 @@ require 'minitest/autorun'
 require 'minitest/should'
 require 'minitest/spec/expect'
 require 'coveralls'
+require 'simplecov'
 
 # Start Coveralls
+SimpleCov.merge_timeout 3600
+SimpleCov.start
 Coveralls.wear!
 
 # Set chatty_crow by block

@@ -4,7 +4,7 @@ require File.expand_path '../helper', __FILE__
 class ContactsTest < MiniTest::Should::TestCase
   should 'Return contact list' do
     # Fake URL contacts
-    mock_contacts body: { contacts: [%w(test1 test2)] }.to_json
+    mock_contacts body: { contacts: %w(test1 test2) }.to_json
 
     # Get contacts
     response = ChattyCrow.get_contacts
@@ -34,8 +34,8 @@ class ContactsTest < MiniTest::Should::TestCase
         failed: 12
       },
       contacts: {
-        exists: [%w(franta1 franta5)],
-        failed: [%w(franta2 franta3)]
+        exists: %w(franta1 franta5),
+        failed: %w(franta2 franta3)
       }
     }
 
