@@ -1,4 +1,4 @@
-!{height=50px;}http://chattycrow.com/crow3logo.png!
+!http://chattycrow.com/crow3logo.png!
 
 h1. ChattyCrow - Ruby (on Rails) library
 
