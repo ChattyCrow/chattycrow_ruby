@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "chatty_crow/version"
 
 Gem::Specification.new do |s|
-  s.name        = %q{ChattyCrow}
+  s.name        = %q{chatty_crow}
   s.version     = ChattyCrow::VERSION.dup
   s.summary     = %q{Send your messages to more than 6 comunnication channels to clients.}
   s.license     = %q{MIT}
