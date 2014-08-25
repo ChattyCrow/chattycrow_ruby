@@ -1,4 +1,6 @@
 module ChattyCrow
+
+  # ChattyCrow rails integration
   class Railtie < ::Rails::Railtie
     config.after_initialize do
       ChattyCrow.configure_from_rails

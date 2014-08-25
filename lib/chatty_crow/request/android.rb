@@ -1,5 +1,6 @@
 module ChattyCrow
   module Request
+    # Android push notification request
     class Android < BaseRequest
       attr_accessor :data, :collapse_key, :time_to_live
 

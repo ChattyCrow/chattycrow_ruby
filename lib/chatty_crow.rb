@@ -15,6 +15,7 @@ require 'chatty_crow/contacts_request'
 # Automatically load configuration from config/chatty_crow.yml (rails)
 require 'chatty_crow/railtie' if defined?(::Rails) && ::Rails::VERSION::MAJOR >= 3
 
+# ChattyCrow global default module
 module ChattyCrow
 
   def self.send_mail(options = {})

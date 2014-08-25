@@ -12,4 +12,15 @@ class BaseParserTest < MiniTest::Should::TestCase
     # Remove mock
     clear_mock_url
   end
+
+  should 'Raise ChattyCrow::Error::ChannelNotFound when invalid channel or token was send' do
+    # Fake URL for contacts
+    mock_contacts status: ['404', 'Not Found']
+
+    # Call for Contacts!
+    expect { ChattyCrow.get_contacts }.to_raise ChattyCrow::Error::ChannelNotFound
+
+    # Remove mock
+    clear_mock_url
+  end
 end

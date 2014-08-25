@@ -1,5 +1,6 @@
 require File.expand_path '../helper', __FILE__
 
+# Test to send android push notification
 class AndroidTest < MiniTest::Should::TestCase
   should 'Create notification' do
     request = { status: 'OK', msg: 'Success', sucess: 15, total: 15, contacts: [] }

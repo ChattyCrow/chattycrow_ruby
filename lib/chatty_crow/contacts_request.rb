@@ -1,6 +1,8 @@
 require 'restclient'
 
+# Send request to contacts chattycrow API
 module ChattyCrow
+  # Module contains request for contacts
   module ContactsRequest
     def self.get(options)
       execute(options.merge(method: :get)) do |response|
@@ -10,7 +12,7 @@ module ChattyCrow
 
     def self.add(options)
       # Invalid argument
-      raise ::ArgumentError unless options[:contacts]
+      fail ::ArgumentError unless options[:contacts]
 
       # Set as payload
       options[:payload] = { contacts: options.delete(:contacts) }
@@ -23,7 +25,7 @@ module ChattyCrow
 
     def self.remove(options)
       # Invalid argument
-      raise ::ArgumentError unless options[:contacts]
+      fail ::ArgumentError unless options[:contacts]
 
       # Set as payload
       options[:payload] = { contacts: options.delete(:contacts) }
@@ -54,8 +56,10 @@ module ChattyCrow
           end
         when 301, 302, 307
           response.follow_redirection(request, result, &block)
-        when 401, 404
-          raise Error::UnauthorizedRequest
+        when 401
+          fail Error::UnauthorizedRequest, response
+        when 404
+          fail Error::ChannelNotFound, response
         end
       end
     end

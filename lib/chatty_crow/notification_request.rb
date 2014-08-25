@@ -1,8 +1,10 @@
 require 'rest_client'
 
 module ChattyCrow
+  # Notification request
+  # use for send different kind
+  # of notifications
   class NotificationRequest
-
     attr_accessor :request
 
     def self.send(klass, options)
@@ -28,9 +30,11 @@ module ChattyCrow
         when 301, 302, 307
           response.follow_redirection(request, result, &block)
         when 400
-          raise Error::InvalidAttributes.new(response)
-        when 401, 404
-          raise Error::UnauthorizedRequest
+          fail Error::InvalidAttributes, response
+        when 401
+          fail Error::UnauthorizedRequest, response
+        when 404
+          fail Error::ChannelNotFound, response
         end
       end
     end
