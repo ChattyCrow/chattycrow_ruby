@@ -20,6 +20,8 @@ module ChattyCrow
       @request  = klass.new(options)
     end
 
+    # Method actually sends created request to server
+    # @return [Object] Raise an exception or return Response::Notification
     def execute
       options = @request.to_json.merge(url: notification_url, method: :post)
 

@@ -1,5 +1,6 @@
 module ChattyCrow
   module Response
+    # Contacts add request
     class ContactsAdd < Base
       # Statistics
       attr_accessor :success_count, :exists_count, :failed_count
@@ -7,6 +8,8 @@ module ChattyCrow
       # Contact lists
       attr_accessor :exists, :failed
 
+      # Initialize contact add response
+      # @params response [RestClient::Response] Response from server
       def initialize(response)
         super response
 
@@ -38,4 +41,3 @@ module ChattyCrow
     end
   end
 end
-

@@ -1,5 +1,4 @@
 module ChattyCrow
-
   # ChattyCrow rails integration
   class Railtie < ::Rails::Railtie
     config.after_initialize do

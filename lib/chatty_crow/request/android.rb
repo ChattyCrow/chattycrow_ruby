@@ -4,6 +4,8 @@ module ChattyCrow
     class Android < BaseRequest
       attr_accessor :data, :collapse_key, :time_to_live
 
+      # Initialize android request
+      # @param options [Hash] Passed to parent
       def initialize(options = {})
         super options
 

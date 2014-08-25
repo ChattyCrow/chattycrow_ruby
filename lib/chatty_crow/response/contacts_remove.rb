@@ -1,5 +1,6 @@
 module ChattyCrow
   module Response
+    # Contact remove response
     class ContactsRemove < Base
       # Statistics
       attr_accessor :success_count, :failed_count
@@ -7,6 +8,8 @@ module ChattyCrow
       # Failed contacts
       attr_accessor :failed
 
+      # Initialize contact add response
+      # @params response [RestClient::Response] Response from server
       def initialize(response)
         super response
 

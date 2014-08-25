@@ -15,7 +15,36 @@ require 'chatty_crow/contacts_request'
 # Automatically load configuration from config/chatty_crow.yml (rails)
 require 'chatty_crow/railtie' if defined?(::Rails) && ::Rails::VERSION::MAJOR >= 3
 
-# ChattyCrow global default module
+# ChattyCrow global default module entry point to easy send notifications
+#
+#   # Mail
+#   response = ChattyCrow.send_mail
+#
+#   # IOS
+#   response = ChattyCrow.send_ios data: 'news'
+#
+#   # Android
+#   response = ChattyCrow.send_android data: 'news', contats: [ 'test1' ]
+#
+#   # Skype
+#   response = ChattyCrow.send_skype data: 'news'
+#
+#   # Jabber
+#   response = ChattyCrow.send_android data: 'news'
+#
+#   # Sms
+#   response = ChattyCrow.send_sms 'news'
+#
+# Or work with contacts
+#
+#   # Get all contacts
+#   response = ChattyCrow.get_contacts
+#
+#   # Add contact
+#   response = ChattyCrow.add_contacts contacts: [ 'test1' ]
+#
+#   # Remove contacts
+#   response = ChattyCrow.remove_contacts contacts: [ 'test2' ]
 module ChattyCrow
 
   def self.send_mail(options = {})
@@ -54,6 +83,9 @@ module ChattyCrow
     ContactsRequest.remove options
   end
 
+  # Helper method for wrapping non-array objects
+  # @param object [Object] Something
+  # @return [Array] Array
   def self.wrap(object)
     if object.nil?
       []

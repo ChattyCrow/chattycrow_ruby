@@ -40,6 +40,11 @@ module ChattyCrow
       ChattyCrow.configuration.contacts_url
     end
 
+    # Method actually sends created request to server
+    #
+    # @param options [Hash] Options for request
+    # @param resp_block [Block] Block what to do with sucessfull response
+    # @return [Object] Block given execute or RestClient::Response
     def self.execute(options, &resp_block)
       # Prepare options (url + headers)
       options[:url]     = contacts_url

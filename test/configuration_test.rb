@@ -1,5 +1,6 @@
 require File.expand_path '../helper', __FILE__
 
+# Test for proper gem configuration
 class ConfigurationTest < MiniTest::Should::TestCase
   should 'provide defaults' do
     assert_config_default :host, 'https://chatty-crow.com/api/v1/'
