@@ -1,6 +1,6 @@
 module ChattyCrow
   module Request
-    class Mail
+    class Mail < BaseRequest
 
     end
   end

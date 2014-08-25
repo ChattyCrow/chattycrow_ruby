@@ -1,6 +1,6 @@
 module ChattyCrow
   module Request
-    class Android
+    class Android < BaseRequest
       attr_accessor :data, :collapse_key, :time_to_live
 
       def initialize(options = {})

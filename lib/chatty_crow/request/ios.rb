@@ -1,6 +1,6 @@
 module ChattyCrow
   module Request
-    class Ios
+    class Ios < BaseRequest
       def initialize(options = {})
         super options
 

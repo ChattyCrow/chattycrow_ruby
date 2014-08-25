@@ -1,6 +1,6 @@
 module ChattyCrow
   module Request
-    class Skype
+    class Skype < BaseRequest
 
     end
   end

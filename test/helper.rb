@@ -26,8 +26,8 @@ module TestHelpers
 
   # Mock default notification url
   def mock_notification(options)
-    method = options.delete(:method) || :get
-    options[:status] ||= 200
+    method = options.delete(:method) || :post
+    options[:status] ||= %w(200 OK)
 
     FakeWeb.register_uri(method, configuration.notification_url, options)
   end

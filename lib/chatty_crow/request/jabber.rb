@@ -1,6 +1,6 @@
 module ChattyCrow
   module Request
-    class Jabber
+    class Jabber < BaseRequest
 
     end
   end

@@ -43,7 +43,6 @@ module ChattyCrow
       options[:url]     = contacts_url
       options[:headers] = ChattyCrow.default_headers(options.delete(:channel))
 
-
       # Send request
       RestClient::Request.execute(options) do |response, request, result, &block|
         case response.code

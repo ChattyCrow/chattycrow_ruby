@@ -1,6 +1,6 @@
 module ChattyCrow
   module Request
-    class Sms
+    class Sms < BaseRequest
 
     end
   end

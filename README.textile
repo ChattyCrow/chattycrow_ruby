@@ -25,7 +25,7 @@ h3. Yaml configuration
 # config/chatty_crow.yml
 
 global: &global_settings
-  host: 'https://chatty_crow.com/api/v1/'
+  host: 'https://chattycrow.com/api/v1/'
   token: 'asdfg12345'
   default_channel: 'asdfg12345'
 
@@ -45,7 +45,7 @@ h3. Pass block with settings (initializer in Rails?)
 # "config/initializers/chatty_crow.rb"
 
 ChattyCrow.configure do |config|
-  config.host            = 'https://chatty_crow.com/api/v1/'
+  config.host            = 'https://chattycrow.com/api/v1/'
   config.token           = 'asdfg12345'
   config.default_channel = 'asdfg12345'
 end

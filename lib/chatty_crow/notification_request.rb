@@ -1,7 +1,7 @@
 require 'rest_client'
 
 module ChattyCrow
-  module NotificationRequest
+  class NotificationRequest
 
     attr_accessor :request
 
@@ -24,7 +24,7 @@ module ChattyCrow
       RestClient::Request.execute(options) do |response, request, result, &block|
         case response.code
         when 200, 201
-          Response::Notification.new Response
+          Response::Notification.new response
         when 301, 302, 307
           response.follow_redirection(request, result, &block)
         when 400
