@@ -1,6 +1,6 @@
 module ChattyCrow
   module Error
-    class UnauthorizedRequest < Exception
+    class UnauthorizedRequest < ChattyCrowError
     end
   end
 end

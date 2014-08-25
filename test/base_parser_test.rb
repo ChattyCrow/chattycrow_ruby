@@ -23,4 +23,15 @@ class BaseParserTest < MiniTest::Should::TestCase
     # Remove mock
     clear_mock_url
   end
+
+  should 'Raise ChattyCrow::Error::InvalidReturn when invalid response accepted' do
+    # Fake URL for contacts
+    mock_contacts status: ['500', 'Internal Server Error']
+
+    # Call for Contacts!
+    expect { ChattyCrow.get_contacts }.to_raise ChattyCrow::Error::InvalidReturn
+
+    # Remove mock
+    clear_mock_url
+  end
 end

@@ -35,6 +35,8 @@ module ChattyCrow
           fail Error::UnauthorizedRequest, response
         when 404
           fail Error::ChannelNotFound, response
+        else
+          fail Error::InvalidReturn, response
         end
       end
     end

@@ -5,11 +5,12 @@ module ChattyCrow
     # designed to accept RestClient::Response
     class ChattyCrowError < StandardError
       # Json parsed response body
-      attr_accessor :response_body
+      attr_accessor :response_body, :response
 
       def initialize(response = nil)
-        if response && response.body
-          @response_body = JSON.parse(response.body)
+        @response = response
+        if @response && @response.body
+          @response_body = JSON.parse(@response.body)
           super(@response_body['msg']) if @response_body['msg']
         end
       rescue JSON::ParserError
