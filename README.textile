@@ -58,7 +58,7 @@ h3. Email notification
 
 h4. Rails
 
-Integration with ActionMailer is simple, you don't have to change your codes more.
+Integration with ActionMailer is simple, you don't have to change your codes anymore.
 
 <pre>
 class UserMailer < ActionMailer::Base
