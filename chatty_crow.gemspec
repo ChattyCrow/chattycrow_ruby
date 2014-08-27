@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('minitest-spec-expect')
   s.add_development_dependency("rspec-rails")
   s.add_development_dependency("coveralls")
-  s.add_development_dependency("simplecov")
+  s.add_development_dependency("simplecov", "~> 0.9.0")
 
   s.authors = ["Netbrick s.r.o."]
   s.email   = %q{support@netbrick.eu}

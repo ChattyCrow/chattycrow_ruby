@@ -11,6 +11,8 @@ module ChattyCrow
   end
 
   def self.configure_from_yaml(path)
+    yaml = YAML.load_file(path)[Rails.env]
+    return unless yaml
     configuration.host            = yaml['host']
     configuration.token           = yaml['token']
     configuration.default_channel = yaml['default_channel']

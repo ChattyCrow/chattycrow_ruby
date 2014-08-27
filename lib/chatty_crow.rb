@@ -12,8 +12,14 @@ require 'chatty_crow/request/sms'
 require 'chatty_crow/notification_request'
 require 'chatty_crow/contacts_request'
 
-# Automatically load configuration from config/chatty_crow.yml (rails)
-require 'chatty_crow/railtie' if defined?(::Rails) && ::Rails::VERSION::MAJOR >= 3
+# Load Rails Components
+#
+# * Railitie - load config/chatty_crow.yml settings!
+# * ActionMailer - extension to easy send mails via cc
+if defined?(::Rails) && ::Rails::VERSION::MAJOR >= 3
+  require 'chatty_crow/railtie'
+  require 'chatty_crow/action_mailer_extension'
+end
 
 # ChattyCrow global default module entry point to easy send notifications
 #
@@ -46,7 +52,6 @@ require 'chatty_crow/railtie' if defined?(::Rails) && ::Rails::VERSION::MAJOR >=
 #   # Remove contacts
 #   response = ChattyCrow.remove_contacts contacts: [ 'test2' ]
 module ChattyCrow
-
   def self.send_mail(options = {})
     NotificationRequest.send Request::Mail, options
   end

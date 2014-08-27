@@ -11,6 +11,7 @@ class ContactsTest < MiniTest::Should::TestCase
 
     # Validate
     expect(response).to_be_kind_of ChattyCrow::Response::ContactsList
+    expect(response.contacts).to_be_kind_of Array
     expect(response.contacts).to_include 'test1'
     expect(response.contacts).to_include 'test2'
 

@@ -19,7 +19,7 @@ gem install chatty_crow
 
 h2. Configuration
 
-h3. Yaml configuration
+h3. Yaml configuration (automatically loaded in Rails)
 
 <pre>
 # config/chatty_crow.yml
@@ -55,6 +55,27 @@ end
 h2. Usage
 
 h3. Email notification
+
+h4. Rails
+
+Integration with ActionMailer is simply, you don't have to change your codes more.
+
+<pre>
+class UserMailer < ActionMailer::Base
+  # Include extension
+  include ChattyCrow::ActionMailerExtension
+
+  # Different channel
+  chatty_crow_channel 'other_channel'
+
+  # Send welcome mail to user
+  def welcome_mail
+    mail to: "jan.strnadek@chattycrow.com"
+  end
+end
+</pre>
+
+h4. General
 
 h3. IOS Push notification
 
