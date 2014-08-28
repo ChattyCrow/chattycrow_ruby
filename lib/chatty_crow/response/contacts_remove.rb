@@ -9,7 +9,7 @@ module ChattyCrow
       attr_accessor :failed
 
       # Initialize contact add response
-      # @params response [RestClient::Response] Response from server
+      # @param response [RestClient::Response] Response from server
       def initialize(response)
         super response
 

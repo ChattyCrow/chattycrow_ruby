@@ -10,12 +10,15 @@ module ChattyCrow
       end
     end
 
-    def self.add(options)
+    def self.add(*args)
+      # Parse options
+      options = ChattyCrow.extract_options!(args)
+
       # Invalid argument
-      fail ::ArgumentError unless options[:contacts]
+      fail ::ArgumentError if args.length == 0
 
       # Set as payload
-      options[:payload] = { contacts: options.delete(:contacts) }
+      options[:payload] = { contacts: args }
 
       # Send command
       execute(options.merge(method: :post)) do |response|
@@ -23,12 +26,15 @@ module ChattyCrow
       end
     end
 
-    def self.remove(options)
+    def self.remove(*args)
+      # Parse options
+      options = ChattyCrow.extract_options!(args)
+
       # Invalid argument
-      fail ::ArgumentError unless options[:contacts]
+      fail ::ArgumentError if args.length == 0
 
       # Set as payload
-      options[:payload] = { contacts: options.delete(:contacts) }
+      options[:payload] = { contacts: args }
 
       # Send command
       execute(options.merge(method: :delete)) do |response|

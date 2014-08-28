@@ -22,6 +22,8 @@ class ContactsTest < MiniTest::Should::TestCase
   should 'Raise invalid argument when no contact list is present' do
     expect { ChattyCrow.add_contacts }.to_raise ArgumentError
     expect { ChattyCrow.remove_contacts }.to_raise ArgumentError
+    expect { ChattyCrow.add_contacts(test_option: 'option') }.to_raise ArgumentError
+    expect { ChattyCrow.remove_contacts(test_option: 'option') }.to_raise ArgumentError
   end
 
   should 'Return contact add list' do
@@ -44,7 +46,7 @@ class ContactsTest < MiniTest::Should::TestCase
     mock_contacts method: :post, body: request.to_json
 
     # Get contacts
-    response = ChattyCrow.add_contacts(contacts: %w(franta12 franta15))
+    response = ChattyCrow.add_contacts('test1', 'test2')
 
     # Validate
     expect(response).to_be_kind_of ChattyCrow::Response::ContactsAdd
@@ -84,7 +86,7 @@ class ContactsTest < MiniTest::Should::TestCase
     mock_contacts method: :delete, status: %w(201 Created), body: request.to_json
 
     # Get contacts
-    response = ChattyCrow.remove_contacts(contacts: %w(franta12 franta15))
+    response = ChattyCrow.remove_contacts('test12', 'test15')
 
     # Validate
     expect(response).to_be_kind_of ChattyCrow::Response::ContactsRemove

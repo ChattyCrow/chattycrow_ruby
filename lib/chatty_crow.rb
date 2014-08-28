@@ -47,45 +47,45 @@ end
 #   response = ChattyCrow.get_contacts
 #
 #   # Add contact
-#   response = ChattyCrow.add_contacts contacts: [ 'test1' ]
+#   response = ChattyCrow.add_contacts 'test1', 'test2'
 #
 #   # Remove contacts
-#   response = ChattyCrow.remove_contacts contacts: [ 'test2' ]
+#   response = ChattyCrow.remove_contacts 'test1', 'test2'
 module ChattyCrow
-  def self.send_mail(options = {})
-    NotificationRequest.send Request::Mail, options
+  def self.send_mail(*args)
+    NotificationRequest.send(Request::Mail, *args)
   end
 
-  def self.send_ios(options = {})
-    NotificationRequest.send Request::Ios, options
+  def self.send_ios(*args)
+    NotificationRequest.send(Request::Ios, *args)
   end
 
-  def self.send_android(options = {})
-    NotificationRequest.send Request::Android, options
+  def self.send_android(*args)
+    NotificationRequest.send(Request::Android, *args)
   end
 
-  def self.send_skype(options = {})
-    NotificationRequest.send Request::Skype, options
+  def self.send_skype(*args)
+    NotificationRequest.send(Request::Skype, *args)
   end
 
-  def self.send_jabber(options = {})
-    NotificationRequest.send Request::Jabber, options
+  def self.send_jabber(*args)
+    NotificationRequest.send(Request::Jabber, *args)
   end
 
-  def self.send_sms(options = {})
-    NotificationRequest.send Request::Sms, options
+  def self.send_sms(*args)
+    NotificationRequest.send(Request::Sms, *args)
   end
 
   def self.get_contacts(options = {})
-    ContactsRequest.get options
+    ContactsRequest.get(options)
   end
 
-  def self.add_contacts(options = {})
-    ContactsRequest.add options
+  def self.add_contacts(*args)
+    ContactsRequest.add(*args)
   end
 
-  def self.remove_contacts(options = {})
-    ContactsRequest.remove options
+  def self.remove_contacts(*args)
+    ContactsRequest.remove(*args)
   end
 
   # Helper method for wrapping non-array objects
@@ -98,6 +98,15 @@ module ChattyCrow
       object.to_ary || [object]
     else
       [object]
+    end
+  end
+
+  # Helper method for extrat options from array!
+  def self.extract_options!(args)
+    if args.last.is_a?(Hash) && args.last.instance_of?(Hash)
+      args.pop
+    else
+      {}
     end
   end
 end

@@ -19,9 +19,10 @@ module ChattyCrow
       base.extend(ClassMethods)
     end
 
+    # Class methods
     module ClassMethods
       # Set other than default channel
-      # @params new_channel [String] Different channel
+      # @param channel [String] Different channel
       def chatty_crow_channel(channel)
         self.cc_channel = channel
       end

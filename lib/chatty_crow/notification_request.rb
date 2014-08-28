@@ -6,8 +6,8 @@ module ChattyCrow
   # of notifications
   class NotificationRequest
 
-    def self.send(klass, options)
-      instance = klass.new(options)
+    def self.send(klass, *args)
+      instance = klass.new(*args)
       execute(instance)
     end
 
@@ -16,8 +16,8 @@ module ChattyCrow
     end
 
     # Method actually sends created request to server
-    # @params instance [Request::Base] Request children class
-    # @params raise_errors [Boolean] Raise errors if error?
+    # @param instance [Request::Base] Request children class
+    # @param raise_errors [Boolean] Raise errors if error?
     # @return [Object] Raise an exception or return Response::Notification
     def self.execute(instance, raise_errors = true)
       options = instance.to_json.merge(url: notification_url, method: :post)

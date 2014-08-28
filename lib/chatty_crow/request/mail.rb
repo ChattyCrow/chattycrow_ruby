@@ -16,15 +16,20 @@ module ChattyCrow
       attr_accessor :am_mail, :am_klass
 
       # Create mail from options
-      def initialize(options = {})
-        @subject   = options.delete(:subject)
-        @text_body = options.delete(:text_body)
-        @html_body = options.delete(:html_body)
+      # @param args [Array] Options
+      def initialize(*args)
+        # Super parse arguments
+        super(*args)
+
+        # Delete required parts
+        @subject   = @options.delete(:subject)
+        @text_body = @options.delete(:text_body)
+        @html_body = @options.delete(:html_body)
       end
 
       # Create mail request from
-      # @params mail [Mail::Message] Rails mail
-      # @params klass [ActionMailer::Base] Action mailer class
+      # @param klass [ActionMailer::Base] Action mailer class
+      # @param mail [Mail::Message] Rails mail
       def initialize(klass, mail)
         # Set Mail::Message and Mailer class
         @am_mail  = mail

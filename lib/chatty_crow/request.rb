@@ -5,14 +5,25 @@ module ChattyCrow
       # Methods
       attr_accessor :contacts, :payload, :channel
 
+      # Intialize options!
+      attr_accessor :arguments, :options
+
       # Intialize (almost everwhere called by super)
-      # @param options [Hash] options for request
-      def initialize(options = {})
+      # @param args [Array] options for request
+      def initialize(*args)
+        # Error when attributes not exists!
+        fail ::ArgumentError if args.empty?
+
+        # Parse options and arguments
+        # Arguments can be simple message!
+        @options   = ChattyCrow.extract_options!(args)
+        @arguments = args
+
         # Recipients
-        @contacts = ChattyCrow.wrap(options.delete(:contacts)).compact
+        @contacts = ChattyCrow.wrap(@options.delete(:contacts)).compact
 
         # Channel
-        @channel = options.delete(:channel)
+        @channel = @options.delete(:channel)
       end
 
       # Return chatty crow default headers for specific channel
@@ -23,7 +34,13 @@ module ChattyCrow
       # Get request for send
       # @return [Hash] Request
       def to_json
-        { contacts: @contacts, payload: payload, headers: headers }
+        {
+          payload: {
+            contacts: @contacts,
+            payload: payload
+          },
+          headers: headers
+        }
       end
     end
   end

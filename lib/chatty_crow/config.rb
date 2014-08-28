@@ -26,7 +26,8 @@ module ChattyCrow
   def self.default_headers(channel = nil)
     {
       'Token' => configuration.token,
-      'Channel' => channel || configuration.default_channel
+      'Channel' => channel || configuration.default_channel,
+      'Accept' => 'application/json'
     }
   end
 
