@@ -36,8 +36,8 @@ module ChattyCrow
       def to_json
         {
           payload: {
-            contacts: @contacts,
-            payload: payload
+            payload: payload,
+            contacts: @contacts
           },
           headers: headers
         }

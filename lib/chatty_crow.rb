@@ -26,6 +26,9 @@ end
 #   # Mail
 #   response = ChattyCrow.send_mail
 #
+#   # Create mail & send by .deliver!
+#   mail = ChattyCrow.create_mail subject: 'test'
+#
 #   # IOS
 #   response = ChattyCrow.send_ios data: 'news'
 #
@@ -54,6 +57,10 @@ end
 module ChattyCrow
   def self.send_mail(*args)
     NotificationRequest.send(Request::Mail, *args)
+  end
+
+  def self.create_mail(*args)
+    Request::Mail.new(*args)
   end
 
   def self.send_ios(*args)

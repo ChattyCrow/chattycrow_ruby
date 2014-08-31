@@ -5,7 +5,6 @@ module ChattyCrow
   # use for send different kind
   # of notifications
   class NotificationRequest
-
     def self.send(klass, *args)
       instance = klass.new(*args)
       execute(instance)

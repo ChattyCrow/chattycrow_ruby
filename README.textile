@@ -56,6 +56,28 @@ h2. Usage
 
 h3. Email notification
 
+<pre>
+
+# Create mail instance
+mail = ChattyCrow::Request::Mail.new channel: 'other_than_default', subject: 'Test'
+mail.text_body = 'Text part of body'
+mail.html_body = 'Html body <strong>strong part</strong>'
+
+# Add attachments (File / Tempfile / ActionDispatch::Http:UploadedFile / Base64string)
+# Argument :file is required!
+mail.add_file file: params[:uploaded_file], filename: 'test2.jpeg'
+mail.add_file filename: 'test.jpeg', mime_type: 'image/jpeg', file: 'base64data'
+# ...
+
+# Can change contacts!
+mail.contacts = %w(test@netbrick.eu test1@netbrick.eu)
+
+# Send mail
+mail.deliver!
+
+</pre>
+
+
 h4. Rails
 
 Integration with ActionMailer is simple, you don't have to change your codes anymore.

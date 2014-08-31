@@ -2,7 +2,7 @@ require File.expand_path '../helper', __FILE__
 
 # Base parser test
 class BaseParserTest < MiniTest::Should::TestCase
-  should 'Raise ChattyCrow::Error::UnauthorizedRequest when invalid channel or token was send' do
+  should 'Raise UnauthorizedRequest when invalid channel or token was send' do
     # Fake URL for contacts
     mock_contacts status: %w(401 Unauthorized)
 
@@ -13,7 +13,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     clear_mock_url
   end
 
-  should 'Raise ChattyCrow::Error::ChannelNotFound when invalid channel or token was send' do
+  should 'Raise ChannelNotFound when invalid channel or token was send' do
     # Fake URL for contacts
     mock_contacts status: ['404', 'Not Found']
 
@@ -24,7 +24,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     clear_mock_url
   end
 
-  should 'Raise ChattyCrow::Error::InvalidReturn when invalid response accepted' do
+  should 'Raise InvalidReturn when invalid response accepted' do
     # Fake URL for contacts
     mock_contacts status: ['500', 'Internal Server Error']
 

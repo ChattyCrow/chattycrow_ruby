@@ -28,7 +28,7 @@ class AndroidTest < MiniTest::Should::TestCase
     response = ChattyCrow.send_android data: 'Data1', data_test: 'Data Test'
 
     # Expect response
-    expect(response).to_be_kind_of ChattyCrow::Response::Notification
+    expect(response).to_be_instance_of ChattyCrow::Response::Notification
     expect(response.status).to_equal request[:status]
     expect(response.msg).to_equal request[:msg]
     expect(response.success).to_equal request[:success]
