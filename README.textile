@@ -2,7 +2,7 @@
 
 h1. ChattyCrow - Ruby (on Rails) library
 
-!https://travis-ci.org/netbrick/chattycrow_ruby.svg!:https://travis-ci.org/netbrick/chattycrow_ruby !https://coveralls.io/repos/netbrick/chattycrow_ruby/badge.png(Coverage Status)!:https://coveralls.io/r/netbrick/chattycrow_ruby !http://inch-ci.org/github/netbrick/chattycrow_ruby.png?branch=master!:http://inch-ci.org/github/netbrick/chattycrow_ruby !https://codeclimate.com/github/netbrick/chattycrow_ruby/badges/gpa.svg!:https://codeclimate.com/github/netbrick/chattycrow_ruby
+!https://travis-ci.org/netbrick/chattycrow_ruby.svg!:https://travis-ci.org/netbrick/chattycrow_ruby !https://coveralls.io/repos/netbrick/chattycrow_ruby/badge.png(Coverage Status)!:https://coveralls.io/r/netbrick/chattycrow_ruby !http://inch-ci.org/github/netbrick/chattycrow_ruby.png?branch=master!:http://inch-ci.org/github/netbrick/chattycrow_ruby !https://codeclimate.com/github/netbrick/chattycrow_ruby/badges/gpa.svg!:https://codeclimate.com/github/netbrick/chattycrow_ruby !https://gemnasium.com/netbrick/chattycrow_ruby.svg(Dependency Status)!:https://gemnasium.com/netbrick/chattycrow_ruby
 
 This library makes easier call ChattyCrow API (http://chattycrow.com/).
 
