@@ -5,11 +5,15 @@ module ChattyCrow
   # use for send different kind
   # of notifications
   class NotificationRequest
+    # Prepare and send request
+    # @param klass [Object] Notification specific class
+    # @param args [Array] Arguments
     def self.send(klass, *args)
       instance = klass.new(*args)
       execute(instance)
     end
 
+    # :nodoc:
     def self.notification_url
       ChattyCrow.configuration.notification_url
     end
@@ -44,7 +48,7 @@ module ChattyCrow
             false
           end
         end
-      end
-    end
+      end # RestClient
+    end # Execute
   end
 end

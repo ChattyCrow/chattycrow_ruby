@@ -12,6 +12,18 @@ module ChattyCrow
         @status = @body.delete('status')
         @msg    = @body.delete('msg')
       end
+
+      def ok?
+        @status.to_s.downcase == 'ok'
+      end
+
+      def partial_error?
+        @status.to_s.downcase == 'perror'
+      end
+
+      def error?
+        @status.to_s.downcase == 'error'
+      end
     end
   end
 end

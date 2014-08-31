@@ -7,8 +7,10 @@ require 'simplecov'
 require 'coveralls'
 
 # Start Coveralls
-SimpleCov.start
-Coveralls.wear!
+SimpleCov.start do
+  add_filter "/test/"
+end
+# Coveralls.wear!
 
 require 'chatty_crow'
 

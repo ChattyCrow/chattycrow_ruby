@@ -27,18 +27,6 @@ module ChattyCrow
         @failed = contacts.delete('failed') if contacts
       end
 
-      def ok?
-        @status.to_s.downcase == 'ok'
-      end
-
-      def partial_error?
-        @status.to_s.downcase == 'perror'
-      end
-
-      def error?
-        @status.to_s.downcase == 'error'
-      end
-
       def failed
         @failed || []
       end
