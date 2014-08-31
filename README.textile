@@ -149,6 +149,14 @@ response = ChattyCrow.send_jabber('Dear users', channel: 'other_than_default', c
 
 h3. SMS notification (only Czech Republic yet)
 
+<pre>
+# Send request
+response = ChattyCrow.send_sms 'Dear Users', contacts: [ '+420111222333', '+420222111333']
+
+# Response
+# response  # ChattyCrow::Response::Notification
+</pre>
+
 h2. Working with contacts via API
 
 It's actually very usable, you can automatically add or remove contacts in your application after user was registered.
