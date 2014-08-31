@@ -196,6 +196,10 @@ module ChattyCrow
       private
 
       def invalid?
+        # Set data from Action mailer
+        set_data_from_am if @am_mail
+
+        # Text body
         @text_body.to_s.empty? && @html_body.to_s.empty?
       end
 
@@ -222,6 +226,8 @@ module ChattyCrow
             @text_body = part.body.raw_source
           end
         end
+
+        Rails.logger.debug "Set html: #{@html_body}\nText: #{@text_body}\n\n"
 
         # Attachments!
         @am_mail.attachments.each do |attachment|
