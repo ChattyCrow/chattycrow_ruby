@@ -80,7 +80,7 @@ h4. General
 <pre>
 
 # Create mail instance
-mail = ChattyCrow::Request::Mail.new channel: 'other_than_default', subject: 'Test'
+mail = ChattyCrow.create_mail channel: 'other_than_default', subject: 'Test'
 mail.text_body = 'Text part of body'
 mail.html_body = 'Html body <strong>strong part</strong>'
 
