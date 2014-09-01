@@ -10,8 +10,9 @@ require 'coveralls'
 SimpleCov.start do
   add_filter "/test/"
 end
-# Coveralls.wear!
+Coveralls.wear!
 
+# Require Gem
 require 'chatty_crow'
 
 # Set chatty_crow by block
