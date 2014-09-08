@@ -3,7 +3,7 @@ PATH
   specs:
     chatty_crow (1.0.0)
       mime-types
-      multi_json (~> 1.10)
+      multi_json (~> 1.0)
       rest_client (~> 1.7.3)
 
 GEM
