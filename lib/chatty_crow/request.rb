@@ -6,7 +6,7 @@ module ChattyCrow
       attr_accessor :contacts, :payload, :channel
 
       # Intialize options!
-      attr_accessor :arguments, :options
+      attr_accessor :arguments, :options, :arguments_flatten
 
       # Intialize (almost everwhere called by super)
       # @param args [Array] options for request
@@ -18,6 +18,9 @@ module ChattyCrow
         # Arguments can be simple message!
         @options   = ChattyCrow.extract_options!(args)
         @arguments = args
+
+        # Create flatten arguments for (skype/android/sms.. requests)
+        @arguments_flatten = args.join(', ') if args.any?
 
         # Recipients
         @contacts = ChattyCrow.wrap(@options.delete(:contacts)).compact

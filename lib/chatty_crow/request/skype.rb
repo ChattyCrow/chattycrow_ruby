@@ -7,7 +7,7 @@ module ChattyCrow
 
         # If arguments exists set as body into options!
         # Its for just easy ChattyCrow.send_skype 'Hello'
-        @options[:body] = @arguments if @arguments
+        @options[:body] = @arguments.flatten.join(', ') if @arguments
 
         # Set payload
         @payload = @options
