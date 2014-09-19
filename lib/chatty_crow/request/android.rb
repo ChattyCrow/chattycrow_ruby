@@ -12,9 +12,17 @@ module ChattyCrow
         @collapse_key = @options.delete(:collapse_key)
         @time_to_live = @options.delete(:time_to_live)
 
-        # Data must be a hash!
+        # If there is arguments, that means on input was a string!
+        # That can be, GCM don't allow to pass a string instead of
+        # Hash!
+        if @arguments.any? && !@arguments[0].is_a?(Hash)
+          raise ::ArgumentError, 'In Android GCM notification parameter has to be a hash'
+        end
+
+        # Set arguments hash, allow entry:
+        # ChattyCrow.send_android({key: value, key2: value2}, collapse_key: '')
         if @arguments.any?
-          @data = @arguments_flatten
+          @data = @arguments[0]
         else
           @data = @options
         end

@@ -20,6 +20,21 @@ class AndroidTest < MiniTest::Should::TestCase
     clear_mock_url
   end
 
+  should 'Create notification with collapse key' do
+    # Create request
+    request = ChattyCrow::Request::Android.new data: 'Data1', data_test: 'Data Test', time_to_live: 5
+    expect(request.time_to_live).to_equal 5
+  end
+
+  should 'Create notification (different input)' do
+    request = ChattyCrow::Request::Android.new({data: 'Data1', data_test: 'Data Test'}, time_to_live: 5)
+    expect(request.time_to_live).to_equal 5
+  end
+
+  should 'Raise exception when first argument is not hash' do
+    expect { ChattyCrow::Request::Android.new('test') }.to_raise ::ArgumentError
+  end
+
   should 'Create partial notification' do
     request = { status: 'PERROR', msg: 'Success partial', sucess: 12, total: 15, contacts: %w(test1 test2) }
     mock_notification body: request.to_json, status: %(201 Created)
