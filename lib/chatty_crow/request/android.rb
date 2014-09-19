@@ -11,7 +11,13 @@ module ChattyCrow
 
         @collapse_key = @options.delete(:collapse_key)
         @time_to_live = @options.delete(:time_to_live)
-        @data         = @options
+
+        # Data must be a hash!
+        if @arguments.any?
+          @data = @arguments_flatten
+        else
+          @data = @options
+        end
       end
 
       def payload

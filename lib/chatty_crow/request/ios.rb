@@ -5,11 +5,12 @@ module ChattyCrow
       def initialize(*args)
         super(*args)
 
-        # If arguments exists set as alert into options!
-        @options[:alert] = @arguments if @arguments
-
         # Set payload
-        @payload = @options
+        if @arguments.any?
+          @payload = @arguments_flatten
+        else
+          @payload = @options
+        end
       end
     end
   end

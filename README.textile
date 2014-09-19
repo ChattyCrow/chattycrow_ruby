@@ -102,7 +102,7 @@ h3. IOS Push notification
 
 <pre>
 # Send request
-response = ChattyCrow.send_ios(alert: 'hello', channel: 'other_than_default', contacts: [ 'new_ios_id1', 'new_ios_id2' ])
+response = ChattyCrow.send_ios(alert: 'hello', channel: 'other_than_default', token: 'other', contacts: [ 'new_ios_id1', 'new_ios_id2' ])
 
 # Or simple message
 response = ChattyCrow.send_ios('Dear users')
