@@ -102,7 +102,7 @@ h3. IOS Push notification
 
 <pre>
 # Send request
-response = ChattyCrow.send_ios(alert: 'hello', channel: 'other_than_default', token: 'other', contacts: [ 'new_ios_id1', 'new_ios_id2' ])
+response = ChattyCrow.send_ios(payload: { 'hello' }, channel: 'other_than_default', token: 'other', contacts: [ 'new_ios_id1', 'new_ios_id2' ])
 
 # Or simple message
 response = ChattyCrow.send_ios('Dear users')
@@ -114,7 +114,7 @@ h3. Android Push notification
 
 <pre>
 # Send request
-response = ChattyCrow.send_android(key: 'key1', key2: 'key2', channel: 'other_than_default', contacts: [ 'new_ios_id1', 'new_ios_id2' ])
+response = ChattyCrow.send_android(payload: { data: { key: 'key1', key2: 'key2'}, time_to_live: 5 }, channel: 'other_than_default', contacts: [ 'new_ios_id1', 'new_ios_id2' ])
 
 # Response
 # response  # ChattyCrow::Response::Notification

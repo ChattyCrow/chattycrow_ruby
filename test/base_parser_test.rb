@@ -48,7 +48,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     # Get error
     error = nil
     begin
-      ChattyCrow.send_ios 'Welcome users'
+      ChattyCrow.send_ios payload: 'Welcome users'
     rescue => e
       error = e
     end
@@ -66,7 +66,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     mock_notification status: ['400', 'Bad Request'], body: {}.to_json
 
     # Send !
-    ChattyCrow.send_ios 'Welcome users' rescue nil
+    ChattyCrow.send_ios payload: 'Welcome users' rescue nil
 
     # Get last request
     expect(last_headers['token']).to_equal ChattyCrow.configuration.token
@@ -83,7 +83,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     token = 'test_token'
 
     # Send !
-    ChattyCrow.send_ios 'Welcome users', token: token  rescue nil
+    ChattyCrow.send_ios payload: 'Welcome users', token: token  rescue nil
 
     # Get last request
     expect(last_headers['token']).to_equal token

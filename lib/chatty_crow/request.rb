@@ -37,11 +37,6 @@ module ChattyCrow
         ChattyCrow.default_headers(@channel, @token)
       end
 
-      # Get payload
-      def payload
-        @payload
-      end
-
       # Get request for send
       # @return [Hash] Request
       def to_json

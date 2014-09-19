@@ -2,38 +2,21 @@ module ChattyCrow
   module Request
     # Android push notification request
     class Android < BaseRequest
-      attr_accessor :data, :collapse_key, :time_to_live
-
       # Initialize android request
       # @param args [Array] Options
       def initialize(*args)
         super(*args)
 
-        @collapse_key = @options.delete(:collapse_key)
-        @time_to_live = @options.delete(:time_to_live)
+        # Get payload
+        @payload = @options.delete(:payload)
 
-        # If there is arguments, that means on input was a string!
-        # That can be, GCM don't allow to pass a string instead of
-        # Hash!
-        if @arguments.any? && !@arguments[0].is_a?(Hash)
-          raise ::ArgumentError, 'In Android GCM notification parameter has to be a hash'
+        # Raise error when payload is empty!
+        raise ::ArgumentError, 'Payload is empty!' if @payload.nil? || !@payload.is_a?(Hash)
+
+        # Android require data field and the field must be hash!
+        if !@payload[:data].is_a?(Hash) || @payload[:data].nil? || @payload[:data].keys.empty?
+          raise ::ArgumentError, 'Data in payload is required and it needs to be hash!'
         end
-
-        # Set arguments hash, allow entry:
-        # ChattyCrow.send_android({key: value, key2: value2}, collapse_key: '')
-        if @arguments.any?
-          @data = @arguments[0]
-        else
-          @data = @options
-        end
-      end
-
-      def payload
-        {
-          data: @data,
-          collapse_key: @collapse_key,
-          time_to_live: @time_to_live
-        }
       end
     end
   end

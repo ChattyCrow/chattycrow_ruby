@@ -5,12 +5,11 @@ module ChattyCrow
       def initialize(*args)
         super(*args)
 
-        # Set payload
-        if @arguments.any?
-          @payload = @arguments_flatten
-        else
-          @payload = @options
-        end
+        # Get payload
+        @payload = @options.delete(:payload)
+
+        # Raise error when payload is empty!
+        raise ::ArgumentError, 'Payload is empty!' unless @payload
       end
     end
   end

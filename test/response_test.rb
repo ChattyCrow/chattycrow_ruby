@@ -14,7 +14,7 @@ class ResponseTest < MiniTest::Should::TestCase
     mock_notification status: %(201 Created), body: body.to_json
 
     # Get response
-    response = ChattyCrow.send_ios 'Dear users'
+    response = ChattyCrow.send_ios(payload: 'Dear users')
     expect(response.msg).to_equal body[:msg]
     expect(response.code).to_equal 201
 
