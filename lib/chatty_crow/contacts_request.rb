@@ -54,7 +54,7 @@ module ChattyCrow
     def self.execute(options, &resp_block)
       # Prepare options (url + headers)
       options[:url]     = contacts_url
-      options[:headers] = ChattyCrow.default_headers(options.delete(:channel))
+      options[:headers] = ChattyCrow.default_headers(options.delete(:channel), options.delete(:token))
 
       # Send request
       RestClient::Request.execute(options) do |response, request, result, &block|

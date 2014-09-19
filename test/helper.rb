@@ -8,7 +8,7 @@ require 'coveralls'
 
 # Start Coveralls
 SimpleCov.start do
-  add_filter "/test/"
+  add_filter '/test/'
 end
 Coveralls.wear!
 
@@ -41,6 +41,15 @@ module TestHelpers
     options[:status] ||= %w(200 OK)
 
     FakeWeb.register_uri(method, configuration.contacts_url, options)
+  end
+
+  # Get last headers
+  def last_headers
+    ret = {}
+    FakeWeb.last_request.each_header do |key, value|
+      ret[key] = value
+    end
+    ret
   end
 
   def clear_mock_url

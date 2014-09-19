@@ -38,7 +38,7 @@ class BaseParserTest < MiniTest::Should::TestCase
   should 'Raise InvalidAttributes when attributes missing' do
     body = {
       status: 'ERROR',
-      parameters: [ 'subject', 'text_body' ],
+      parameters: ['subject', 'text_body'],
       msg: 'Missing parameters'
     }
 
@@ -59,6 +59,67 @@ class BaseParserTest < MiniTest::Should::TestCase
 
     # Remove mock
     clear_mock_url
+  end
 
+  should 'Use token from configuration' do
+    # Fake URL for notification
+    mock_notification status: ['400', 'Bad Request'], body: {}.to_json
+
+    # Send !
+    ChattyCrow.send_ios 'Welcome users' rescue nil
+
+    # Get last request
+    expect(last_headers['token']).to_equal ChattyCrow.configuration.token
+
+    # Clear
+    clear_mock_url
+  end
+
+  should 'Use token from parameters' do
+    # Fake URL for notification
+    mock_notification status: ['400', 'Bad Request'], body: {}.to_json
+
+    # New token
+    token = 'test_token'
+
+    # Send !
+    ChattyCrow.send_ios 'Welcome users', token: token  rescue nil
+
+    # Get last request
+    expect(last_headers['token']).to_equal token
+
+    # Clear
+    clear_mock_url
+  end
+
+  should 'Use contact configuration token' do
+    # Fake URL for contacts
+    mock_contacts status: %w(401 Unauthorized)
+
+    # Call for Contacts!
+    ChattyCrow.get_contacts rescue nil
+
+    # Get last request
+    expect(last_headers['token']).to_equal ChattyCrow.configuration.token
+
+    # Remove mock
+    clear_mock_url
+  end
+
+  should 'Use contact token from parameters' do
+    # Fake URL for contacts
+    mock_contacts status: %w(401 Unauthorized)
+
+    # New token
+    token = 'test_token'
+
+    # Call for Contacts!
+    ChattyCrow.get_contacts(token: token) rescue nil
+
+    # Get last request
+    expect(last_headers['token']).to_equal token
+
+    # Remove mock
+    clear_mock_url
   end
 end

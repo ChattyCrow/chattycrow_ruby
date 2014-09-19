@@ -23,11 +23,11 @@ module ChattyCrow
     configure_from_yaml(path) if File.exist?(path)
   end
 
-  def self.default_headers(channel = nil)
+  def self.default_headers(channel, token)
     {
-      'Token' => configuration.token,
+      'Token'   => token   || configuration.token,
       'Channel' => channel || configuration.default_channel,
-      'Accept' => 'application/json'
+      'Accept'  => 'application/json'
     }
   end
 

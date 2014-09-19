@@ -3,7 +3,7 @@ module ChattyCrow
     # Parent of all requests to ChattyCrow API
     class BaseRequest
       # Methods
-      attr_accessor :contacts, :payload, :channel
+      attr_accessor :contacts, :payload, :channel, :token
 
       # Intialize options!
       attr_accessor :arguments, :options, :arguments_flatten
@@ -27,11 +27,14 @@ module ChattyCrow
 
         # Channel
         @channel = @options.delete(:channel)
+
+        # Token
+        @token   = @options.delete(:token)
       end
 
       # Return chatty crow default headers for specific channel
       def headers
-        ChattyCrow.default_headers(@channel)
+        ChattyCrow.default_headers(@channel, @token)
       end
 
       # Get request for send
