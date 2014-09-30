@@ -122,7 +122,7 @@ response = ChattyCrow.send_android(payload: { data: { key: 'key1', key2: 'key2'}
 # response.msg = "Message"
 # response.success = 5
 # response.failed  = 1
-# response.contacts = [ 'new_ios_id1' ]
+# response.failed_contacts = [ 'new_ios_id1' ]
 </pre>
 
 h3. Skype notification
