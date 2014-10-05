@@ -14,9 +14,11 @@ Gem::Specification.new do |s|
     %w(chatty_crow.gemspec CHANGELOG Gemfile Guardfile INSTALL LICENSE Rakefile README.textile)
   s.test_files    = Dir.glob('{test}/**/*')
 
+  s.required_ruby_version = '>= 2'
+
   s.add_runtime_dependency('multi_json', '~> 1.0')
   s.add_runtime_dependency('rest_client', '~> 1.7')
-  s.add_runtime_dependency('mime-types', '~> 2.3')
+  s.add_runtime_dependency('mime-types', '>= 1')
 
   s.add_development_dependency('fakeweb', '~> 1.3')
   s.add_development_dependency('minitest_should', '~> 0.3')
