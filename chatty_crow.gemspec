@@ -27,8 +27,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency('simplecov', '~> 0.9.0')
 
   s.authors = ['Netbrick s.r.o.']
-  s.email   = 'support@netbrick.eu'
-  s.homepage = 'http://www.netbrick.eu'
+  s.email   = ['support@netbrick.eu', 'info@chattycrow.com']
+  s.homepage = 'http://www.chattycrow.com'
 
   s.platform = Gem::Platform::RUBY
 end
