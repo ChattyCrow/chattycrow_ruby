@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    chatty_crow (1.2.0)
-      mime-types (~> 2.3)
+    chatty_crow (1.2.1)
+      mime-types (>= 1)
       multi_json (~> 1.0)
       rest_client (~> 1.7)
 
