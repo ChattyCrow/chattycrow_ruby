@@ -9,7 +9,7 @@ module ChattyCrow
         @payload = @options.delete(:payload)
 
         # Raise error when payload is empty!
-        raise ::ArgumentError, 'Payload is empty!' unless @payload
+        fail ::ArgumentError, 'Payload is empty!' unless @payload
       end
     end
   end

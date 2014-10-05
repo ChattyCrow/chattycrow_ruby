@@ -4,12 +4,6 @@ require 'restclient'
 module ChattyCrow
   # Module contains request for contacts
   module ContactsRequest
-    def self.get(options)
-      execute(options.merge(method: :get)) do |response|
-        Response::ContactsList.new response
-      end
-    end
-
     def self.add(*args)
       # Parse options
       options = ChattyCrow.extract_options!(args)

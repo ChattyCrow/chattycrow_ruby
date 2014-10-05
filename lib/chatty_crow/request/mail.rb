@@ -145,8 +145,8 @@ module ChattyCrow
         end
 
         # Raise arguments error when there is not filename or mime type
-        raise ::ArgumentError, 'Mime type is required' unless attachment.mime_type
-        raise ::ArgumentError, 'Filename is required' unless attachment.filename
+        fail ::ArgumentError, 'Mime type is required' unless attachment.mime_type
+        fail ::ArgumentError, 'Filename is required' unless attachment.filename
 
         # Add to attachments
         attachments << attachment
@@ -226,8 +226,6 @@ module ChattyCrow
             @text_body = part.body.raw_source
           end
         end
-
-        Rails.logger.debug "Set html: #{@html_body}\nText: #{@text_body}\n\n"
 
         # Attachments!
         @am_mail.attachments.each do |attachment|

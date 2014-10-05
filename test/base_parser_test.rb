@@ -7,7 +7,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     mock_contacts status: %w(401 Unauthorized)
 
     # Call for Contacts!
-    expect { ChattyCrow.get_contacts }.to_raise ChattyCrow::Error::UnauthorizedRequest
+    expect { ChattyCrow.add_contacts 'test1', 'test2' }.to_raise ChattyCrow::Error::UnauthorizedRequest
 
     # Remove mock
     clear_mock_url
@@ -18,7 +18,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     mock_contacts status: ['404', 'Not Found']
 
     # Call for Contacts!
-    expect { ChattyCrow.get_contacts }.to_raise ChattyCrow::Error::ChannelNotFound
+    expect { ChattyCrow.add_contacts 'test1', 'test2' }.to_raise ChattyCrow::Error::ChannelNotFound
 
     # Remove mock
     clear_mock_url
@@ -29,7 +29,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     mock_contacts status: ['500', 'Internal Server Error']
 
     # Call for Contacts!
-    expect { ChattyCrow.get_contacts }.to_raise ChattyCrow::Error::InvalidReturn
+    expect { ChattyCrow.add_contacts 'test1', 'test2' }.to_raise ChattyCrow::Error::InvalidReturn
 
     # Remove mock
     clear_mock_url
@@ -38,7 +38,7 @@ class BaseParserTest < MiniTest::Should::TestCase
   should 'Raise InvalidAttributes when attributes missing' do
     body = {
       status: 'ERROR',
-      parameters: ['subject', 'text_body'],
+      parameters: %w(subject text_body),
       msg: 'Missing parameters'
     }
 
@@ -83,7 +83,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     token = 'test_token'
 
     # Send !
-    ChattyCrow.send_ios payload: 'Welcome users', token: token  rescue nil
+    ChattyCrow.send_ios payload: 'Welcome users', token: token rescue nil
 
     # Get last request
     expect(last_headers['token']).to_equal token
@@ -97,7 +97,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     mock_contacts status: %w(401 Unauthorized)
 
     # Call for Contacts!
-    ChattyCrow.get_contacts rescue nil
+    ChattyCrow.add_contacts 'test1' rescue nil
 
     # Get last request
     expect(last_headers['token']).to_equal ChattyCrow.configuration.token
@@ -114,7 +114,7 @@ class BaseParserTest < MiniTest::Should::TestCase
     token = 'test_token'
 
     # Call for Contacts!
-    ChattyCrow.get_contacts(token: token) rescue nil
+    ChattyCrow.add_contacts('test1', token: token) rescue nil
 
     # Get last request
     expect(last_headers['token']).to_equal token

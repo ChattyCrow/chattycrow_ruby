@@ -160,14 +160,6 @@ h2. Working with contacts via API
 
 It's actually very usable, you can automatically add or remove contacts in your application after user was registered.
 
-h3. Contact list
-
-<pre>
-  contacts = ChattyCrow.get_contacts(channel: 'other_than_default')
-  # Response (ChattyCrow::Response::ContactsList)
-  # contacts.contacts = [ 'contact1', 'contact2', 'contact3' ]
-</pre>
-
 h3. Add contact
 
 <pre>

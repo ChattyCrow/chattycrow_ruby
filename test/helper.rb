@@ -37,7 +37,7 @@ module TestHelpers
 
   # Mock default URL for contacts
   def mock_contacts(options)
-    method = options.delete(:method) || :get
+    method = options.delete(:method) || :post
     options[:status] ||= %w(200 OK)
 
     FakeWeb.register_uri(method, configuration.contacts_url, options)
