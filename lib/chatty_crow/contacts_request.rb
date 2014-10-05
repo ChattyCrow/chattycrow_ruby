@@ -4,40 +4,45 @@ require 'restclient'
 module ChattyCrow
   # Module contains request for contacts
   module ContactsRequest
+    # Add contact request
+    # @params args [Arguments]
+    # @return [Response::ContactsAdd] Instance
     def self.add(*args)
-      # Parse options
-      options = ChattyCrow.extract_options!(args)
-
-      # Invalid argument
-      fail ::ArgumentError if args.length == 0
-
-      # Set as payload
-      options[:payload] = { contacts: args }
-
-      # Send command
-      execute(options.merge(method: :post)) do |response|
-        Response::ContactsAdd.new response
-      end
+      # Send contact request
+      send_contact_request(Response::ContactsAdd, :post, *args)
     end
 
+    # Remove contact request
+    # @params args [Arguments]
+    # @return [Response::ContactsRemove] Instance
     def self.remove(*args)
-      # Parse options
-      options = ChattyCrow.extract_options!(args)
-
-      # Invalid argument
-      fail ::ArgumentError if args.length == 0
-
-      # Set as payload
-      options[:payload] = { contacts: args }
-
-      # Send command
-      execute(options.merge(method: :delete)) do |response|
-        Response::ContactsRemove.new response
-      end
+      # Send contact request
+      send_contact_request(Response::ContactsRemove, :delete, *args)
     end
 
+    # Return default contacts url
     def self.contacts_url
       ChattyCrow.configuration.contacts_url
+    end
+
+    # Method prepare data from add/remove contact
+    # @params klass [Class] Initializable class for response
+    # @params method [String] HTTP method
+    # @params *ąrgs [Arguments]
+    def self.send_contact_request(klass, method, *args)
+      # Parse options
+      options = ChattyCrow.extract_options!(args)
+
+      # Invalid argument
+      fail ::ArgumentError if args.length == 0
+
+      # Set as payload
+      options[:payload] = { contacts: args }
+
+      # Send command
+      execute(options.merge(method: method)) do |response|
+        klass.new response
+      end
     end
 
     # Method actually sends created request to server
