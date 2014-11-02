@@ -45,10 +45,10 @@ module ChattyCrow
     attr_accessor :http_read_timeout
 
     # Call urls
-    attr_reader :notification_url, :contacts_url
+    attr_reader :notification_url, :contacts_url, :messages_url
 
     def initialize
-      self.host          = 'https://chatty-crow.com/api/v1/'
+      self.host          = 'https://chattycrow.com/api/v1/'
       @token             = nil
       @default_channel   = nil
       @http_open_timeout = 2
@@ -59,6 +59,7 @@ module ChattyCrow
       @host             = s
       @notification_url = s + (s[-1] == '/' ? '' : '/') + 'notification'
       @contacts_url     = s + (s[-1] == '/' ? '' : '/') + 'contacts'
+      @messages_url     = s + (s[-1] == '/' ? '' : '/') + 'message'
     end
   end
 end

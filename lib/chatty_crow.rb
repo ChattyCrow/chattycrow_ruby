@@ -2,6 +2,7 @@ require 'rest-client'
 require 'chatty_crow/config'
 require 'chatty_crow/error'
 require 'chatty_crow/response'
+require 'chatty_crow/message'
 require 'chatty_crow/request'
 require 'chatty_crow/request/android'
 require 'chatty_crow/request/ios'
@@ -9,6 +10,8 @@ require 'chatty_crow/request/jabber'
 require 'chatty_crow/request/mail'
 require 'chatty_crow/request/skype'
 require 'chatty_crow/request/sms'
+require 'chatty_crow/request/hipchat'
+require 'chatty_crow/request/slack'
 require 'chatty_crow/notification_request'
 require 'chatty_crow/contacts_request'
 
@@ -75,6 +78,14 @@ module ChattyCrow
     NotificationRequest.send(Request::Skype, *args)
   end
 
+  def self.send_hipchat(*args)
+    NotificationRequest.send(Request::HipChat, *args)
+  end
+
+  def self.send_slack(*args)
+    NotificationRequest.send(Request::Slack, *args)
+  end
+
   def self.send_jabber(*args)
     NotificationRequest.send(Request::Jabber, *args)
   end
@@ -115,5 +126,20 @@ module ChattyCrow
     else
       {}
     end
+  end
+
+  # Symbolize keys
+  def self.symbolize_keys!(hash)
+    hash.keys.each do |key|
+      # Get value
+      value = hash.delete(key)
+
+      # Save as sym
+      hash[(key.to_sym rescue key)] = value
+
+      # Recursive?
+      symbolize_keys!(hash[key.to_sym]) if value.is_a?(Hash)
+    end
+    true
   end
 end

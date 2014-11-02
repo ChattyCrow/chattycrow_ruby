@@ -3,9 +3,9 @@ require File.expand_path '../helper', __FILE__
 # Test for proper gem configuration
 class ConfigurationTest < MiniTest::Should::TestCase
   should 'provide defaults' do
-    assert_config_default :host, 'https://chatty-crow.com/api/v1/'
-    assert_config_default :notification_url, 'https://chatty-crow.com/api/v1/notification'
-    assert_config_default :contacts_url, 'https://chatty-crow.com/api/v1/contacts'
+    assert_config_default :host, 'https://chattycrow.com/api/v1/'
+    assert_config_default :notification_url, 'https://chattycrow.com/api/v1/notification'
+    assert_config_default :contacts_url, 'https://chattycrow.com/api/v1/contacts'
     assert_config_default :token, nil
     assert_config_default :default_channel, nil
     assert_config_default :http_open_timeout, 2

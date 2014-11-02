@@ -12,3 +12,12 @@ end
 
 # Default task - test
 task default: %w(test coveralls:push)
+
+# Task console
+task :console do
+  require 'irb'
+  require 'irb/completion'
+  require './lib/chattycrow'
+  ARGV.clear
+  IRB.start
+end

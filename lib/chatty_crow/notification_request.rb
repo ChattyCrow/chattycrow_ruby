@@ -29,7 +29,7 @@ module ChattyCrow
         begin
           case response.code
           when 200, 201
-            Response::Notification.new response
+            Response::Notification.new response, options
           when 301, 302, 307
             response.follow_redirection(request, result, &block)
           when 400

@@ -28,7 +28,7 @@ module ChattyCrow
     # Method prepare data from add/remove contact
     # @params klass [Class] Initializable class for response
     # @params method [String] HTTP method
-    # @params *ąrgs [Arguments]
+    # @params args [Arguments]
     def self.send_contact_request(klass, method, *args)
       # Parse options
       options = ChattyCrow.extract_options!(args)

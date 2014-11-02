@@ -3,7 +3,7 @@ module ChattyCrow
     # Parent of all requests to ChattyCrow API
     class BaseRequest
       # Methods
-      attr_accessor :contacts, :payload, :channel, :token
+      attr_accessor :contacts, :payload, :channel, :token, :time, :location
 
       # Intialize options!
       attr_accessor :arguments, :options, :arguments_flatten
@@ -19,11 +19,31 @@ module ChattyCrow
         @options   = ChattyCrow.extract_options!(args)
         @arguments = args
 
+        # Symbolize keys in options for validations
+        ChattyCrow.symbolize_keys!(@options)
+
         # Create flatten arguments for (skype/android/sms.. requests)
         @arguments_flatten = args.join(', ') if args.any?
 
         # Recipients
         @contacts = ChattyCrow.wrap(@options.delete(:contacts)).compact
+
+        # Time and location - validate!
+        if @time = @options.delete(:time)
+          { start: Fixnum, end: Fixnum }.each do |key, klass|
+            unless @time[key].is_a?(klass)
+              fail ::ArgumentError, "#{key} must be instance of #{klass}"
+            end
+          end
+        end
+
+        if @location = @options.delete(:location)
+          { latitude: Float, longitude: Float, range: Fixnum }.each do |key, klass|
+            unless @location[key].is_a?(klass)
+              fail ::ArgumentError, "#{key} must be instance of #{klass}"
+            end
+          end
+        end
 
         # Channel
         @channel = @options.delete(:channel)
@@ -43,7 +63,9 @@ module ChattyCrow
         {
           payload: {
             payload: payload,
-            contacts: @contacts
+            contacts: @contacts,
+            time: @time,
+            location: @location
           },
           headers: headers
         }
