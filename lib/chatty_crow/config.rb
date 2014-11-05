@@ -27,7 +27,8 @@ module ChattyCrow
     {
       'Token'   => token   || configuration.token,
       'Channel' => channel || configuration.default_channel,
-      'Accept'  => 'application/json'
+      'Accept'  => 'application/json',
+      'Content-Type' => 'application/json'
     }
   end
 

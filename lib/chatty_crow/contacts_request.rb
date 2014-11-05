@@ -55,6 +55,9 @@ module ChattyCrow
       options[:url]     = contacts_url
       options[:headers] = ChattyCrow.default_headers(options.delete(:channel), options.delete(:token))
 
+      # Convert payload to JSON
+      options[:payload] = options[:payload].to_json
+
       # Send request
       RestClient::Request.execute(options) do |response, request, result, &block|
         case response.code

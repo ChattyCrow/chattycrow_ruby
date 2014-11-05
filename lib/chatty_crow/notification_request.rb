@@ -23,8 +23,13 @@ module ChattyCrow
     # @param raise_errors [Boolean] Raise errors if error?
     # @return [Object] Raise an exception or return Response::Notification
     def self.execute(instance, raise_errors = true)
+      # Get options
       options = instance.to_json.merge(url: notification_url, method: :post)
 
+      # Set options to JSON string
+      options[:payload] = options[:payload].to_json
+
+      # Send
       RestClient::Request.execute(options) do |response, request, result, &block|
         begin
           case response.code
