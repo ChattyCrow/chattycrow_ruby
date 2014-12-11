@@ -13,6 +13,7 @@ require 'chatty_crow/request/sms'
 require 'chatty_crow/request/hipchat'
 require 'chatty_crow/request/slack'
 require 'chatty_crow/notification_request'
+require 'chatty_crow/batch_notification_request'
 require 'chatty_crow/contacts_request'
 
 # Load Rails Components
@@ -104,6 +105,11 @@ module ChattyCrow
 
   def self.remove_contacts(*args)
     ContactsRequest.remove(*args)
+  end
+
+  # Create batch request
+  def self.create_batch(token = nil)
+    BatchNotificationRequest.new(token)
   end
 
   # Helper method for wrapping non-array objects

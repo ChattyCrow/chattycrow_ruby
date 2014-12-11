@@ -5,6 +5,9 @@ module ChattyCrow
       # Methods
       attr_accessor :contacts, :payload, :channel, :token, :time, :location
 
+      # Batch request method
+      attr_accessor :channel
+
       # Intialize options!
       attr_accessor :arguments, :options, :arguments_flatten
 
@@ -59,8 +62,8 @@ module ChattyCrow
 
       # Get request for send
       # @return [Hash] Request
-      def to_json
-        {
+      def to_json(channel = false)
+        ret = {
           payload: {
             payload: payload,
             contacts: @contacts,
@@ -69,6 +72,10 @@ module ChattyCrow
           },
           headers: headers
         }
+
+        ret[:payload][:channel] = @channel if channel
+
+        ret
       end
     end
   end

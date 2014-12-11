@@ -24,9 +24,12 @@ module ChattyCrow
   end
 
   def self.default_headers(channel, token)
+    batch_headers(token).merge({ 'Channel' => (channel || configuration.default_channel) })
+  end
+
+  def self.batch_headers(token)
     {
       'Token'   => token   || configuration.token,
-      'Channel' => channel || configuration.default_channel,
       'Accept'  => 'application/json',
       'Content-Type' => 'application/json'
     }
@@ -46,7 +49,7 @@ module ChattyCrow
     attr_accessor :http_read_timeout
 
     # Call urls
-    attr_reader :notification_url, :contacts_url, :messages_url
+    attr_reader :notification_url, :contacts_url, :messages_url, :batch_url
 
     def initialize
       self.host          = 'https://chattycrow.com/api/v1/'
@@ -61,6 +64,7 @@ module ChattyCrow
       @notification_url = s + (s[-1] == '/' ? '' : '/') + 'notification'
       @contacts_url     = s + (s[-1] == '/' ? '' : '/') + 'contacts'
       @messages_url     = s + (s[-1] == '/' ? '' : '/') + 'message'
+      @batch_url        = s + (s[-1] == '/' ? '' : '/') + 'batch'
     end
   end
 end

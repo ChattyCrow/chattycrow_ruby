@@ -189,7 +189,7 @@ module ChattyCrow
           subject: @subject,
           html_body: Base64.encode64(@html_body || ''),
           text_body: Base64.encode64(@text_body || ''),
-          attachments: attachments.map(&:to_json)
+          files: attachments.map(&:to_json)
         }
       end
 

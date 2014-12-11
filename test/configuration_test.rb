@@ -6,6 +6,7 @@ class ConfigurationTest < MiniTest::Should::TestCase
     assert_config_default :host, 'https://chattycrow.com/api/v1/'
     assert_config_default :notification_url, 'https://chattycrow.com/api/v1/notification'
     assert_config_default :contacts_url, 'https://chattycrow.com/api/v1/contacts'
+    assert_config_default :batch_url, 'https://chattycrow.com/api/v1/batch'
     assert_config_default :token, nil
     assert_config_default :default_channel, nil
     assert_config_default :http_open_timeout, 2
@@ -19,6 +20,7 @@ class ConfigurationTest < MiniTest::Should::TestCase
     assert_equal url, config.host
     assert_equal "#{url}/notification", config.notification_url
     assert_equal "#{url}/contacts", config.contacts_url
+    assert_equal "#{url}/batch", config.batch_url
   end
 
   should 'use correct url with backslash' do
@@ -28,6 +30,7 @@ class ConfigurationTest < MiniTest::Should::TestCase
     assert_equal url, config.host
     assert_equal "#{url}notification", config.notification_url
     assert_equal "#{url}contacts", config.contacts_url
+    assert_equal "#{url}batch", config.batch_url
   end
 
   def assert_config_default(option, default_value, config = nil)

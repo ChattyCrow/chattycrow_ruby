@@ -180,7 +180,13 @@ response = ChattyCrow.send_sms 'Dear Users', contacts: [ '+420111222333', '+4202
 
 h2. Message detail and state
 
-We're providing uniq message id to check what's going on with your message.
+We're providing uniq message id to check what's going on with your message. You obtain message instance from successfull response.
+
+<pre>
+message = response.message
+message.refresh_data!
+message.status # OK etc..
+</pre>
 
 h2. Working with contacts via API
 
@@ -208,7 +214,26 @@ h3. Remove contact
   # response.failed = [ 'new2failed' ]
 </pre>
 
+h2. Batch notifications
+
+Allows sends multiple notifications with serveral restrictions, notifications are immediatelly aborted when:
+* Token and channels not matched
+* One of channel is suspended
+* Times or locations are invalid in any case
+
+<pre>
+  batch = ChattyCrow.create_batch("different token then default")
+
+  # Its almost the same as send_android, bud channel is required!
+  batch.add_jabber 'Dear users', channel: 'channel', contacts: [ 'aa' ]
+  batch.execute! # Will raise error
+</pre>
+
 h2. Changelog
+
+h3. 1.3.0
+
+* Add batch notifications (this is required for Redmine Plugin or Capistrano Plugin)
 
 h3. 1.2.2
 
