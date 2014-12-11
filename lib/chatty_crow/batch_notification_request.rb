@@ -1,5 +1,4 @@
 require 'rest_client'
-require 'byebug'
 
 module ChattyCrow
   # Batch notification request
