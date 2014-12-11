@@ -28,7 +28,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency('rspec-rails', '~> 2.14')
   s.add_development_dependency('coveralls', '~> 0.7')
   s.add_development_dependency('simplecov', '~> 0.9')
-  s.add_development_dependency('byebug')
 
   s.authors = ['Netbrick s.r.o.']
   s.email   = ['support@netbrick.eu', 'info@chattycrow.com']
