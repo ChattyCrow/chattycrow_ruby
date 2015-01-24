@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2'
 
   s.add_runtime_dependency('multi_json', '~> 1.0')
-  s.add_runtime_dependency('rest_client', '~> 1.7')
+  s.add_runtime_dependency('rest-client', '~> 1.7')
   s.add_runtime_dependency('mime-types', '>= 1')
 
   s.add_development_dependency('fakeweb', '~> 1.3')
