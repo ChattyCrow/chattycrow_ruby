@@ -35,6 +35,21 @@ module TestHelpers
     FakeWeb.register_uri(method, configuration.notification_url, options)
   end
 
+  # Mock default batch url
+  def mock_batch(options)
+    method = options.delete(:method) || :post
+    options[:status] ||= %w(200 OK)
+
+    FakeWeb.register_uri(method, configuration.batch_url, options)
+  end
+
+  # Mock messages
+  def mock_message(options)
+    method = options.delete(:method) || :get
+    options[:status] ||= %w(200 OK)
+    FakeWeb.register_uri(method, "#{configuration.messages_url}/#{options[:id]}", options)
+  end
+
   # Mock default URL for contacts
   def mock_contacts(options)
     method = options.delete(:method) || :post

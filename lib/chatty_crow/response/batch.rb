@@ -17,11 +17,12 @@ module ChattyCrow
         # Get Token
         @token = options[:headers]['Token']
 
-        puts @body
+        # Create an hash for channels
+        @channels ||= {}
 
         # Parse channels!
         @body['channels'].each do |channel|
-          channels[channel['channel']] = BatchNotification.new(channel, @token)
+          @channels[channel['channel']] = BatchNotification.new(channel, @token)
         end
       end
 
@@ -31,24 +32,27 @@ module ChattyCrow
     end
 
     # Batch notification response class
-    class BatchNotification
+    # Place for refactoring
+    class BatchNotification < Base
       # Infos
-      attr_accessor :success, :total, :failed_contacts, :message_id, :msg
+      attr_accessor :success, :total, :failed_contacts, :message_id
 
       # Token & channel
       attr_accessor :token, :channel
 
-      # init from response
+      # Init from response
       def initialize(body, token)
+        super(body)
+
+        # Set token
         @token = token
 
         # Parse response
-        @channel         = body.delete('channel')
-        @msg             = body.delete('msg')
-        @success         = body.delete('success')
-        @total           = body.delete('total')
-        @failed_contacts = body.delete('contacts')
-        @message_id      = body.delete('message_id')
+        @channel         = @body.delete('channel')
+        @success         = @body.delete('success')
+        @total           = @body.delete('total')
+        @failed_contacts = @body.delete('contacts')
+        @message_id      = @body.delete('message_id')
       end
 
       # Get instance of message

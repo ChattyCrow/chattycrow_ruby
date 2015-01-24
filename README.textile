@@ -224,9 +224,9 @@ Allows sends multiple notifications with serveral restrictions, notifications ar
 <pre>
   batch = ChattyCrow.create_batch("different token then default")
 
-  # Its almost the same as send_android, bud channel is required!
+  # Its almost the same as send_android, but channel is required!
   batch.add_jabber 'Dear users', channel: 'channel', contacts: [ 'aa' ]
-  batch.execute! # Will raise error
+  batch.execute # add '!' to raise error, when something is wrong
 </pre>
 
 h2. Changelog

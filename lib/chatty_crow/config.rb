@@ -24,7 +24,7 @@ module ChattyCrow
   end
 
   def self.default_headers(channel, token)
-    batch_headers(token).merge({ 'Channel' => (channel || configuration.default_channel) })
+    batch_headers(token).merge('Channel' => (channel || configuration.default_channel))
   end
 
   def self.batch_headers(token)

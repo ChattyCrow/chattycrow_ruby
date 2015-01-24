@@ -77,6 +77,7 @@ module ChattyCrow
     private
 
     # Method actually sends created request to server
+    # [Can be refactored, with request class]
     # @param raise_errors [Boolean] Raise errors if error?
     # @return [Object] Raise an exception or return Response::Notification
     def proceed(raise_errors = true)

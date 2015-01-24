@@ -19,7 +19,7 @@ module ChattyCrow
       @message_id = opts.delete(:message_id)
 
       # Refresh
-      # refresh
+      refresh
     end
 
     # Refresh
@@ -33,7 +33,7 @@ module ChattyCrow
 
     private
 
-    def set_data(response)
+    def data=(response)
       # Parse body
       body = JSON.parse(response.body)
       @status  = body.delete('status')
@@ -59,9 +59,9 @@ module ChattyCrow
         begin
           case response.code
           when 200
-            set_data response
+            self.data = response
           when 301, 302, 307
-            response.follow_redirection(request, reuslt, &block)
+            response.follow_redirection(request, result, &block)
           when 401
             fail Error::UnauthorizedRequest, response
           when 404
