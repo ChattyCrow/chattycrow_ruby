@@ -1,6 +1,6 @@
-!http://chattycrow.com/crow3logo.png!
+!https://avatars1.githubusercontent.com/u/9012750?v=3&s=200!
 
-h1. ChattyCrow - Ruby (on Rails) library
+h1. ChattyCrow - Ruby library
 
 !https://travis-ci.org/ChattyCrow/chattycrow_ruby.svg!:https://travis-ci.org/ChattyCrow/chattycrow_ruby !https://coveralls.io/repos/netbrick/chattycrow_ruby/badge.png(Coverage Status)!:https://coveralls.io/r/netbrick/chattycrow_ruby !http://inch-ci.org/github/ChattyCrow/chattycrow_ruby.png?branch=master!:http://inch-ci.org/github/ChattyCrow/chattycrow_ruby !https://codeclimate.com/github/netbrick/chattycrow_ruby/badges/gpa.svg!:https://codeclimate.com/github/ChattyCrow/chattycrow_ruby !https://gemnasium.com/ChattyCrow/chattycrow_ruby.svg(Dependency Status)!:https://gemnasium.com/ChattyCrow/chattycrow_ruby !https://hakiri.io/github/ChattyCrow/chattycrow_ruby/master.svg!:https://hakiri.io/github/ChattyCrow/chattycrow_ruby/master
 
