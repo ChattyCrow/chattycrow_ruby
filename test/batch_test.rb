@@ -17,7 +17,7 @@ class BatchTest < MiniTest::Should::TestCase
           total: 15,
           contacts: %w(test1 test2),
           message_id: 1
-        },
+        }
       ]
     }
     mock_batch status: %(200 Ok), body: body.to_json
@@ -57,7 +57,7 @@ class BatchTest < MiniTest::Should::TestCase
           total: 15,
           contacts: %w(test1 test2),
           message_id: 1
-        },
+        }
       ]
     }
     mock_batch status: %(200 Ok), body: body.to_json
