@@ -16,21 +16,19 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.9'
 
-  s.add_runtime_dependency('multi_json', '~> 1.0')
-  s.add_runtime_dependency('rest-client', '~> 1.7.2')
+  s.add_runtime_dependency('multi_json', '~> 1.12')
+  s.add_runtime_dependency('rest-client', '~> 2.0.0')
   s.add_runtime_dependency('mime-types', '>= 1')
 
-  s.add_development_dependency('fakeweb', '~> 1.3')
-  s.add_development_dependency('minitest_should', '~> 0.3')
-  s.add_development_dependency('json-schema', '~> 2.2')
-  s.add_development_dependency('minitest', '~> 4.6')
-  s.add_development_dependency('minitest-spec-expect', '~> 0.1')
-  s.add_development_dependency('rspec-rails', '~> 2.14')
-  s.add_development_dependency('coveralls', '~> 0.7')
-  s.add_development_dependency('simplecov', '~> 0.9')
+  s.add_development_dependency('rake', '~> 11.2.2')
+  s.add_development_dependency('webmock', '~> 2.1')
+  s.add_development_dependency('json-schema', '~> 2.6')
+  s.add_development_dependency('minitest', '~> 5.9')
+  s.add_development_dependency('coveralls', '~> 0.8.14')
+  s.add_development_dependency('simplecov', '~> 0.12.0')
 
-  s.authors = ['Netbrick s.r.o.']
-  s.email   = ['support@netbrick.eu', 'info@chattycrow.com']
+  s.authors = ['ChattyCrow LTD.']
+  s.email   = ['info@chattycrow.com']
   s.homepage = 'http://www.chattycrow.com'
 
   s.platform = Gem::Platform::RUBY

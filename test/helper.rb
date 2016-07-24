@@ -1,8 +1,6 @@
 require 'rubygems'
-require 'fakeweb'
+require 'webmock/minitest'
 require 'minitest/autorun'
-require 'minitest/should'
-require 'minitest/spec/expect'
 require 'simplecov'
 require 'coveralls'
 
@@ -31,31 +29,28 @@ module TestHelpers
   def mock_notification(options)
     method = options.delete(:method) || :post
     options[:status] ||= %w(200 OK)
-
-    FakeWeb.register_uri(method, configuration.notification_url, options)
+    stub_request(method, configuration.notification_url).to_return(options)
   end
 
   # Mock default batch url
   def mock_batch(options)
     method = options.delete(:method) || :post
     options[:status] ||= %w(200 OK)
-
-    FakeWeb.register_uri(method, configuration.batch_url, options)
+    stub_request(method, configuration.batch_url).to_return(options)
   end
 
   # Mock messages
   def mock_message(options)
     method = options.delete(:method) || :get
     options[:status] ||= %w(200 OK)
-    FakeWeb.register_uri(method, "#{configuration.messages_url}/#{options[:id]}", options)
+    stub_request(method, "#{configuration.messages_url}/#{options[:id]}").to_return(options)
   end
 
   # Mock default URL for contacts
   def mock_contacts(options)
     method = options.delete(:method) || :post
     options[:status] ||= %w(200 OK)
-
-    FakeWeb.register_uri(method, configuration.contacts_url, options)
+    stub_request(method, configuration.contacts_url).to_return(options)
   end
 
   # Get last headers
@@ -68,7 +63,7 @@ module TestHelpers
   end
 
   def clear_mock_url
-    FakeWeb.clean_registry
+    WebMock.reset!
   end
 end
 
